@@ -7,6 +7,9 @@
 .d-flex {
     display: flex;
 }
+.d-none {
+    display: none;
+}
 a{
     text-decoration: none;
 }
@@ -15,7 +18,7 @@ img {
     display: block;
 }
 .logo img {
-    width: 150px;
+    width: 130px;
 }
 
 footer img {
@@ -25,11 +28,13 @@ footer img {
     height: 65px;
     background-color: #fff;
     position: relative;
+    align-items: center;
 }
-nav {
+.navbar nav {
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 40px;
+    /* gap: 40px; */
 }
 .main-header {
     background-color: var(--header-bg-color);
@@ -43,11 +48,18 @@ nav {
     margin: 0 auto;
     padding: 0 20px;
 }
+.navbar .menu-icon {
+    order: 2;
+    cursor: pointer;
+    color: var(--text-border-color);
+    font-size: 1.25rem;
+    margin-left: 20px;
+}
 .main-menu {
     list-style: none;
     position: absolute;
     top: 60px;
-    left: 0;
+    right: 2000px;
     background-color: var(--big-bg-color);
     width: 100vw;
     height: calc(100dvh - 60px);
@@ -63,6 +75,9 @@ nav {
     color: var(--text-border-color);
     font-family: Inter, sans-serif;
 }
+.main-menu.menu-open {
+    left: 0;
+}
 .btn-top-down {
     border-radius: 12px;
     border: 2px solid var(--text-border-color);
@@ -77,6 +92,8 @@ nav {
     display: none;
 }
 button.login {
+    margin-left: auto;
+    margin-right: 15px;
     background-color: #fff;
     color: var(--text-border-color);
 }
