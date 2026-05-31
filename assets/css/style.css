@@ -1,22 +1,38 @@
 @import url('variables.css');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
 .d-flex {
     display: flex;
 }
+
 .d-none {
     display: none;
 }
-a{
+.hidden-btn {
+    opacity: 0;
+    pointer-events: none;
+}
+.move-up {
+    transform: translateY(-5px);
+}
+.fa-angle-down{
+    display: none;
+}
+a {
     text-decoration: none;
 }
+
 img {
     width: 100%;
     display: block;
 }
+
 .logo img {
     width: 130px;
 }
@@ -24,30 +40,44 @@ img {
 footer img {
     width: 150px;
 }
-.navbar {
+
+.strip {
+    position: absolute;
+    top: 7.5px;
+    left: 0;
+    width: 100%;
     height: 65px;
     background-color: #fff;
+}
+
+.navbar {
+      transform: translateY(28px);
+    height: 65px;
     position: relative;
     align-items: center;
 }
+
 .navbar nav {
     width: 100%;
     display: flex;
     align-items: center;
     /* gap: 40px; */
 }
+
 .main-header {
     background-color: var(--header-bg-color);
     height: 100vh;
+    width: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .main-container {
-    max-width: 1290px;
     margin: 0 auto;
     padding: 0 20px;
 }
+
 .navbar .menu-icon {
     order: 2;
     cursor: pointer;
@@ -55,29 +85,34 @@ footer img {
     font-size: 1.25rem;
     margin-left: 20px;
 }
+
 .main-menu {
     list-style: none;
     position: absolute;
-    top: 60px;
+    top: 45px;
     right: 2000px;
     background-color: var(--big-bg-color);
     width: 100vw;
-    height: calc(100dvh - 60px);
+    height: calc(100dvh - 73px);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
 }
+
 .main-menu li:not(:last-child) {
     margin-bottom: 20px;
 }
+
 .main-menu li a {
     color: var(--text-border-color);
     font-family: Inter, sans-serif;
 }
+
 .main-menu.menu-open {
     left: 0;
 }
+
 .btn-top-down {
     border-radius: 12px;
     border: 2px solid var(--text-border-color);
@@ -88,19 +123,23 @@ footer img {
     font-family: Inter, sans-serif;
     cursor: pointer;
 }
+
 .btn-top-down span {
     display: none;
 }
+
 button.login {
     margin-left: auto;
     margin-right: 15px;
     background-color: #fff;
     color: var(--text-border-color);
 }
+
 button.create-account {
     background-color: var(--button-color);
     color: #fff;
 }
+
 .create-account img {
     width: 20px;
     height: 20px;
@@ -109,21 +148,100 @@ button.create-account {
 
 
 /*--------------- Media Queries---------------------*/
-@media (min-width: 1025px) {
-.btn-top-down {
-    height: 44px;
+@media (min-width: 769px) {
+    .navbar .menu-icon {
+    font-size: 1.5rem;
+}
+    .main-container {
+    padding: 0 40px;
+}
+    .logo img {
+        width: 163px;
     }
+
+    .btn-top-down {
+        height: 44px;
+    }
+
     .btn-top-down span {
+        display: inline;
+    }
+
+    .btn-top-down i,
+    .btn-top-down img {
+        display: none;
+    }
+
+    button.login {
+        width: 84px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    button.create-account {
+        width: 185px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+   
+}
+
+@media (min-width: 1095px) {
+    .fa-angle-down{
     display: inline;
 }
-.btn-top-down i,
-.btn-top-down img {
-    display: none;
+    .btn-top-down {
+        height: 44px;
+    }
+
+    .btn-top-down span {
+        display: inline;
+    }
+
+    .btn-top-down i,
+    .btn-top-down img {
+        display: none;
+    }
+
+    button.login {
+        width: 84px;
+        flex-shrink: 0; 
+        margin-left: 19px;
+    }
+
+    button.create-account {
+        width: 185px;
+        font-size: 14px;
+        font-weight: 500;
+        flex-shrink: 0;
+    }
+
+    .navbar {
+         width: 100%;
+    padding: 0 75px;
+    }
+    .menu-icon {
+        display: none;
+    }
+    .main-menu {
+    list-style: none;
+    position: static;
+    background-color: transparent;
+    height: 56px;
+    flex-direction: row;
+    font-size: 14px;
+    justify-content: flex-end;
+
 }
-button.login {
-    width: 84px;
+.main-menu li a {
+    padding: 19px;
+    margin-bottom: 0px;
 }
-button.create-account {
-    width: 185px;
+.main-menu li:not(:last-child) {
+    margin-bottom: 0px;
+}
+.main-menu li:nth-child(odd) a{
+    color: #222222;
 }
 }
