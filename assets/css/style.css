@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-
 .d-flex {
     display: flex;
 }
@@ -65,7 +64,6 @@ footer img {
     width: 100%;
     display: flex;
     align-items: center;
-    /* gap: 40px; */
 }
 
 .main-header {
@@ -184,7 +182,6 @@ button.create-account {
 
 .header-image {
     width: 280px;
-
     position: relative;
     align-self: center;
 }
@@ -200,9 +197,6 @@ button.create-account {
     align-items: center;
     width: 16px;
     height: 16px;
-
-    /* gap: 10px;
-    margin-top: 20px; */
 }
 
 .reviews {
@@ -221,7 +215,6 @@ button.create-account {
     height: 38px;
     font-size: 13px;
     font-weight: 700;
-    font-style: bold;
     text-transform: uppercase;
     background-color: var(--button-color);
     color: #fff;
@@ -229,12 +222,9 @@ button.create-account {
     cursor: pointer;
 }
 
-/*--------------- Media Queries---------------------*/
-@media (min-width: 769px) {
-    .navbar .menu-icon {
-        font-size: 1.5rem;
-    }
+/* --------------- Media Queries --------------------- */
 
+@media (min-width: 769px) {
     .main-container {
         padding: 0 40px;
     }
@@ -242,6 +232,7 @@ button.create-account {
     .logo img {
         width: 163px;
     }
+
 
     .btn-top-down {
         height: 44px;
@@ -268,38 +259,104 @@ button.create-account {
         font-weight: 500;
     }
 
+    #headerImage .header-postcard {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
 
+    .header-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
+        align-items: start;
+        align-content: center;
+        padding: 40px 40px 0;
+        gap: 48px 0;
+        overflow: hidden;
+    }
+
+    .header-title {
+        grid-column: 1;
+        grid-row: 1;
+        font-size: 48px;
+        line-height: 1.15;
+    }
+
+    .header-subtitle {
+        grid-column: 1;
+        grid-row: 2;
+        font-size: 16px;
+    }
+
+    .btn-try-it {
+        grid-column: 1;
+        grid-row: 3;
+        width: 200px;
+        height: 44px;
+        font-size: 14px;
+        margin-top: 0;
+        justify-self: start;
+    }
+
+    .rating {
+        grid-column: 1;
+        grid-row: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        justify-self: start;
+        align-self: center;
+        margin-left: 220px;
+    }
+
+    .stars {
+        width: auto;
+        height: auto;
+        gap: 2px;
+    }
+
+    .stars img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .reviews {
+        font-size: 14px;
+    }
+
+    #headerImage {
+        grid-column: 2;
+        grid-row: 1 / 5;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        align-self: center;
+        overflow: visible;
+    }
+
+    #headerImage .header-postcard {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .header-statistics {
+        width: 80%;
+        top: 0px;
+        right: 30px;
+    }
 }
 
 @media (min-width: 1095px) {
-    .fa-angle-down {
-        display: inline;
-    }
 
-    .btn-top-down {
-        height: 44px;
-    }
-
-    .btn-top-down span {
-        display: inline;
-    }
-
-    .btn-top-down i,
-    .btn-top-down img {
+    .menu-icon {
         display: none;
     }
 
-    button.login {
-        width: 84px;
-        flex-shrink: 0;
-        margin-left: 19px;
-    }
-
-    button.create-account {
-        width: 185px;
-        font-size: 14px;
-        font-weight: 500;
-        flex-shrink: 0;
+    .fa-angle-down {
+        display: inline;
     }
 
     .navbar {
@@ -307,31 +364,94 @@ button.create-account {
         padding: 0 75px;
     }
 
-    .menu-icon {
-        display: none;
-    }
-
     .main-menu {
-        list-style: none;
         position: static;
         background-color: transparent;
         height: 56px;
         flex-direction: row;
         font-size: 14px;
         justify-content: flex-end;
+    }
 
+    .main-menu li:not(:last-child) {
+        margin-bottom: 0;
     }
 
     .main-menu li a {
         padding: 19px;
-        margin-bottom: 0px;
-    }
-
-    .main-menu li:not(:last-child) {
-        margin-bottom: 0px;
     }
 
     .main-menu li:nth-child(odd) a {
         color: #222222;
+    }
+
+    button.login {
+        margin-left: 19px;
+        flex-shrink: 0;
+    }
+
+    button.create-account {
+        flex-shrink: 0;
+    }
+
+    #headerImage {
+        max-height: 80vh;
+    }
+
+    #headerImage .header-postcard {
+        max-height: 80vh;
+    }
+
+    .header-statistics {
+        width: 80%;
+
+    }
+}
+
+@media (min-width: 1250px) {
+    .header-content {
+        grid-template-columns: 1fr 40%;
+        align-items: start;
+        padding: 148px 0 128px 75px;
+    }
+
+    .header-title {
+        font-size: 82px;
+    }
+
+    .header-subtitle {
+        font-size: 20px;
+        max-width: 400px;
+    }
+
+    .btn-try-it {
+        width: 260px;
+        height: 64px;
+    }
+
+    .rating {
+        margin-left: 300px;
+        padding-right: 40px;
+    }
+
+    #headerImage {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        align-self: end;
+        grid-row: 1 / 5;
+    }
+
+    #headerImage .header-postcard {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .header-statistics {
+        right: 20px;
+        width: 90%;
     }
 }
