@@ -165,7 +165,7 @@ button.create-account {
     font-family: Inter, sans-serif;
 }
 
-.header-title .highlight {
+.highlight {
     font-family: Covered By Your Grace, cursive;
     font-style: normal;
     font-weight: 400;
@@ -221,7 +221,79 @@ button.create-account {
     font-family: Inter, sans-serif;
     cursor: pointer;
 }
+/* --------------- Brand Section --------------------- */
+.brand-section {
+    background-color: #fff;
+    max-height: 667px;
+}
+.brand-section-title{
+    width: 45.13vw;
+    font-size: 4.38vw;
+    font-weight: 700;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+    text-align: center;
+    margin: 7.36vw auto 4.03vw;
+    line-height: 5.27vw;
+}
 
+
+
+.brands {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 6.67vw;
+}
+
+.card {
+    flex-direction: column;
+    align-items: center;
+    width: calc(50% - 40px);
+    max-width: 284px;
+}
+
+.brand-photo {
+    width: 100%;
+    aspect-ratio: 284 / 193;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.brand-logo {
+    width: 70%;
+    height: 32px;
+    margin-top: 12px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.first-brand-photo {
+    background-image: url(../images/first-brand-img.png);
+}
+.first-brand-logo{
+    background-image: url(../images/first-brand-name.png);
+}
+.second-brand-photo {
+    background-image: url(../images/second-brand-img.png);
+}
+.second-brand-logo{
+    background-image: url(../images/second-brand-name.png);
+}
+.third-brand-photo {
+    background-image: url(../images/third-brand-img.png);
+}
+.third-brand-logo{
+    background-image: url(../images/third-brand-name.png);
+}
+.fourth-brand-photo {
+    background-image: url(../images/fourth-brand-img.png);
+}
+.fourth-brand-logo{
+    background-image: url(../images/fourth-brand-name.png);
+    width: clamp(40px, 6vw, 60px);
+}
 /* --------------- Media Queries --------------------- */
 
 @media (min-width: 769px) {
@@ -279,14 +351,14 @@ button.create-account {
     .header-title {
         grid-column: 1;
         grid-row: 1;
-        font-size: 48px;
+        font-size: 5.69vw;
         line-height: 1.15;
     }
 
     .header-subtitle {
         grid-column: 1;
         grid-row: 2;
-        font-size: 16px;
+        font-size: 1.39vw;
     }
 
     .btn-try-it {
@@ -347,6 +419,9 @@ button.create-account {
         top: 0px;
         right: 30px;
     }
+   .brands{
+    gap: 8vw;
+   }
 }
 
 @media (min-width: 1095px) {
@@ -406,6 +481,16 @@ button.create-account {
         width: 80%;
 
     }
+  
+    .card {
+        width: calc(25% - 15px);
+    }
+    .brands{
+    gap: 20px;
+   }
+   .brand-logo{
+    margin-top: 24px;
+   }
 }
 
 @media (min-width: 1250px) {
@@ -416,11 +501,11 @@ button.create-account {
     }
 
     .header-title {
-        font-size: 82px;
+        font-size: 5.69vw;
     }
 
     .header-subtitle {
-        font-size: 20px;
+        font-size: 1.39vw;
         max-width: 400px;
     }
 
@@ -454,4 +539,19 @@ button.create-account {
         right: 20px;
         width: 90%;
     }
+    .card img:first-child {
+    width: 284px;
+}
+.first-brand-logo{
+    width: 184px;
+}
+.second-brand-logo{
+    width: 235px;
+}
+.third-brand-logo{
+    width: 166px;
+}
+.fourth-brand-logo{
+    width: 60px;
+}
 }
