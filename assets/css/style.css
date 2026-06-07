@@ -170,6 +170,7 @@ button.create-account {
     font-style: normal;
     font-weight: 400;
     color: var(--font-color);
+    font-size: 128%;
 }
 
 .header-subtitle {
@@ -207,7 +208,6 @@ button.create-account {
 }
 
 .btn-try-it {
-    margin-top: 40px;
     border-radius: 15px;
     border: 2px solid var(--text-border-color);
     box-shadow: 3px 3px 0px var(--text-border-color);
@@ -221,20 +221,22 @@ button.create-account {
     font-family: Inter, sans-serif;
     cursor: pointer;
 }
+.button-tirf-header {
+    margin-top: 40px;
+}
 /* --------------- Brand Section --------------------- */
 .brand-section {
     background-color: #fff;
     
 }
 .brand-section-title{
-    width: 45.13vw;
-    font-size: 4.38vw;
+    font-size: 30px;
     font-weight: 700;
     color: var(--text-border-color);
     font-family: Inter, sans-serif;
     text-align: center;
     margin: 7.36vw auto 4.03vw;
-    line-height: 5.27vw;
+    line-height: 36px;
 }
 
 
@@ -349,6 +351,112 @@ background-image: url(../images/statistic.png);
     width: 228px;
     height: 200px;
 }
+/* --------------- Features Section --------------------- */
+.features {
+    background-color: var(--big-bg-color);
+    padding-top: 6vw;
+}
+
+.feature-section-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+    text-align: center;
+    margin: 24px 0 60px 0;
+    line-height: 36px;
+}
+.features-blocks {
+    flex-direction: column;
+    
+}
+.feature-block {
+    flex-direction: column;
+    margin-bottom: 128px;
+    gap: 31px;
+}
+.first-feature-block, 
+.third-feature-block {
+    justify-content: flex-start;
+    align-self: flex-start;
+}
+.second-feature-block {
+    justify-content: flex-end;
+    align-self: flex-end;
+}
+.message {
+    flex-direction: column;
+    margin:0;
+    position: relative;
+    background: transparent;
+    border: 1px solid #d1c7be;
+    border-radius: 15px;
+    padding: 24px;
+    gap: 16px;
+}
+
+.quote {
+    position: absolute;
+    top: -7px;
+    color: var(--button-color);
+    left: 17px;
+    font-size: 40px;
+    line-height: 0.8;
+    background: var(--big-bg-color); 
+    padding: 0 2px;
+ }
+ .feature-block-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+ }
+
+.feature-block h2 {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+}
+.feature-block p {
+    color: var(--small-text-color);
+    font-size: 15px;
+    font-weight: 500;
+    font-family: Inter, sans-serif;
+    line-height: 26px;
+}
+.message p {
+    color: var(--small-text-color);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Inter, sans-serif;
+    line-height: 22px;
+}
+.autor span {
+    color: #A89B90;
+    font-size: 10px;
+    font-weight: 400;
+    font-family: Inter, sans-serif;
+}
+.autor {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.feature-logo {
+    height: 24px;
+    width: auto;
+    display: block;
+}
+.feature-block:last-child {
+    margin-bottom: 48px;
+}
+.button-tirf-feature{
+    margin-bottom: 111px;
+}
+
+
 /* --------------- Media Queries --------------------- */
 
 @media (min-width: 769px) {
@@ -477,10 +585,26 @@ background-image: url(../images/statistic.png);
    .brands{
     gap: 8vw;
    }
+   .features{
+    padding-top: 5.98vw;
+   }
+   .feature-block {
+    flex-direction: column;
+    width: 300px;
+    margin-bottom: 180px;
+    gap: 31px;
+}
+.feature-section-title {
+    margin: 0 auto 9.86vw auto;
+    font-size: 40px;
+    width: 600px;
+}
 }
 
 @media (min-width: 1095px) {
-
+.main-container {
+        padding: 0 60px;
+    }
     .menu-icon {
         display: none;
     }
@@ -546,6 +670,11 @@ background-image: url(../images/statistic.png);
    .brand-logo{
     margin-top: 24px;
    }
+   .brand-section-title{
+    width: 650px;
+    font-size: 4.38vw;
+    line-height: 5.28vw;
+}
    .statistics-section {
     background-color: #f3fafa;
     padding-top: 7.36vw;
@@ -582,9 +711,39 @@ background-image: url(../images/statistic.png);
     width: 228px;
     height: 200px;
 }
+.feature-section-title{
+    font-size: 4.86vw;
+    line-height: 5.28vw;
+    width: 63.45vw;
+}
+.feature-block h2{
+    font-size: 4.17vw;
+    line-height: 4.86vw;
+}
+.first-feature-block, 
+.third-feature-block  {
+    width: 324px;
+}
+.second-feature-block {
+    width: 645px;
+}
+.feature-block p {
+    font-size: 15px;
+    line-height: 26px;
+}
+.message p {
+    font-size: 12px;
+    line-height: 22px;
+}
+.autor span {
+    font-size: 10px;
+}
 }
 
 @media (min-width: 1250px) {
+    .main-container {
+        padding: 0 75px;
+    }
     .header-content {
         grid-template-columns: 1fr 40%;
         align-items: start;
