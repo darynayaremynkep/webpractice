@@ -712,6 +712,92 @@ button.create-account {
     height: 30px;
     background: #2E2F35;
 }
+/*------------------*/
+.reviews-section { 
+    overflow: visible;
+    margin: 96px 0;
+    background-color: (255, 255, 255, 1);
+}
+.reviews-section h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 38px;
+    letter-spacing: -2px;
+}
+.reviews-content{
+    gap: 25px;
+    margin-top: 80px;
+    flex-wrap: nowrap;
+    overflow-x: auto; 
+    padding: 20px 40px;
+    scrollbar-width: none;
+}
+.reviews-content::-webkit-scrollbar {
+    display: none; 
+}
+.review{
+    align-self: flex-start;
+    width: 410px;
+    min-width: 330px;
+    background: #fff;
+    border: 2px solid rgba(46, 47, 53, 1);
+    border-radius: 18px;
+    padding: 25px;
+    text-align: left;
+    flex-shrink: 0; /* картки не стискаються */
+}
+
+.card-header{
+    align-items: center;
+    gap: 16px;
+    margin-bottom:25px;
+}
+.card-header img,
+.avatar-placeholder{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+}
+.button-wrapper {
+    margin-top: 64px;
+    text-align: center;
+}
+.twitter{
+    margin-left: auto;
+}
+.twitter img{
+    color:rgba(0, 0, 0, 1);
+    width: 32px;
+    height: 32px;
+}
+.nickname h3 {
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(46, 47, 53, 1);
+}
+.nickname p {
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(88, 89, 93, 1);
+}
+.review-text{
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    color: rgba(88, 89, 93, 1);
+}
+.postpilot{
+    font-weight: 700;
+}
 
 /* --------------- Media Queries --------------------- */
 
@@ -787,6 +873,9 @@ button.create-account {
         height: 44px;
         font-size: 14px;
         margin-top: 0;
+        
+    }
+    .button-tirf-header{
         justify-self: start;
     }
 
@@ -883,6 +972,10 @@ button.create-account {
 
     .step .line::before {
         height: 3.98vw;
+    }
+    .reviews-section h2 {
+        font-size: 4.375vw;
+        line-height: 5.28vw;
     }
 }
 
