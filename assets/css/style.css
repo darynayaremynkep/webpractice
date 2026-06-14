@@ -550,7 +550,7 @@ button.create-account {
 }
 
 .brand-needs-card.card-3 {
-    background-color: var(--fourth-bg-color);
+    background-color: var(--brand-result-bg-color);
 }
 
 .brand-needs-card.card-3 .img {
@@ -682,7 +682,7 @@ button.create-account {
 }
 
 .step .content h3 {
-    color: rgba(46, 47, 53, 1);
+    color: var(--text-border-color);
 }
 
 .step .content p {
@@ -690,7 +690,7 @@ button.create-account {
     font-weight: 500;
     font-size: 11px;
     line-height: 19px;
-    color: rgba(88, 89, 93, 1);
+    color: var(--small-text-color);
     max-width: 224px;
     height: 57px;
 }
@@ -712,12 +712,14 @@ button.create-account {
     height: 30px;
     background: #2E2F35;
 }
-/*------------------*/
-.reviews-section { 
+
+/*------------------ Reviews Section --------*/
+.reviews-section {
     overflow: visible;
-    margin: 96px 0;
-    background-color: (255, 255, 255, 1);
+    margin: 6.67vw 0;
+    background-color: #fff;
 }
+
 .reviews-section h2 {
     font-size: 30px;
     font-weight: 700;
@@ -728,75 +730,214 @@ button.create-account {
     line-height: 38px;
     letter-spacing: -2px;
 }
-.reviews-content{
+
+.reviews-content {
     gap: 25px;
     margin-top: 80px;
     flex-wrap: nowrap;
-    overflow-x: auto; 
+    overflow-x: auto;
     padding: 20px 40px;
     scrollbar-width: none;
 }
+
 .reviews-content::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
-.review{
+
+.review {
     align-self: flex-start;
     width: 410px;
     min-width: 330px;
     background: #fff;
-    border: 2px solid rgba(46, 47, 53, 1);
+    border: 2px solid var(--text-border-color);
     border-radius: 18px;
     padding: 25px;
     text-align: left;
-    flex-shrink: 0; /* картки не стискаються */
+    flex-shrink: 0;
 }
 
-.card-header{
+.card-header {
     align-items: center;
     gap: 16px;
-    margin-bottom:25px;
+    margin-bottom: 25px;
 }
+
 .card-header img,
-.avatar-placeholder{
-    width:64px;
-    height:64px;
-    border-radius:50%;
+.avatar-placeholder {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
 }
+
 .button-wrapper {
     margin-top: 64px;
     text-align: center;
 }
-.twitter{
+
+.twitter {
     margin-left: auto;
 }
-.twitter img{
-    color:rgba(0, 0, 0, 1);
+
+.twitter img {
+    color: rgba(0, 0, 0, 1);
     width: 32px;
     height: 32px;
 }
+
 .nickname h3 {
     font-family: Inter, sans-serif;
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
-    color: rgba(46, 47, 53, 1);
+    color: var(--text-border-color);
 }
+
 .nickname p {
     font-family: Inter, sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
-    color: rgba(88, 89, 93, 1);
+    color: var(--small-text-color);
 }
-.review-text{
+
+.review-text {
     font-family: Inter, sans-serif;
     font-weight: 500;
     font-size: 16px;
     line-height: 30px;
-    color: rgba(88, 89, 93, 1);
+    color: var(--small-text-color);
 }
-.postpilot{
+
+.postpilot {
     font-weight: 700;
+}
+
+/*---------------- Brand Results -----------------*/
+.case-study-section {
+    background-color: var(--brand-result-bg-color);
+    padding: 6.67vw 0;
+}
+
+.case-study {
+    overflow: hidden;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.case-content {
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.case-content h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 38px;
+    letter-spacing: -2px;
+}
+
+.case-content .description {
+    font-size: 14px;
+    color: var(--small-text-color);
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    line-height: 1.5vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.case-image {
+    width: 280px;
+    position: relative;
+    align-self: center;
+}
+
+.stats {
+    justify-content: space-between;
+    flex-direction: row;
+    width: 300px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    letter-spacing: -1px;
+}
+
+.stat span {
+    font-size: 12px;
+    color: var(--small-text-color);
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.case-btn {
+    text-align: center;
+}
+
+.case-btn button {
+    margin: 20px;
+    border-radius: 15px;
+    border: 2px solid var(--text-border-color);
+    box-shadow: 3px 3px 0px var(--text-border-color);
+    width: 200px;
+    height: 38px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: #fff;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+    cursor: pointer;
+    align-self: center;
+}
+
+.brands-tabs {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 350px;
+}
+
+.brand-tab:first-child {
+    border-bottom: 2px solid var(--font-color);
+}
+
+.brand-tab {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 0 10px;
+    height: 7.2vw;
+    max-height: 54px;
+}
+
+.brand-tab img {
+    height: 3.7vw;
+    max-height: 17px;
+    width: auto;
+    display: block;
 }
 
 /* --------------- Media Queries --------------------- */
@@ -873,9 +1014,10 @@ button.create-account {
         height: 44px;
         font-size: 14px;
         margin-top: 0;
-        
+
     }
-    .button-tirf-header{
+
+    .button-tirf-header {
         justify-self: start;
     }
 
@@ -973,6 +1115,7 @@ button.create-account {
     .step .line::before {
         height: 3.98vw;
     }
+
     .reviews-section h2 {
         font-size: 4.375vw;
         line-height: 5.28vw;
@@ -1153,80 +1296,162 @@ button.create-account {
         font-size: 16px;
         line-height: 30px;
     }
-}
 
-@media (min-width: 1250px) {
-    .main-container {
-        padding: 0 75px;
-    }
-
-    .header-content {
-        grid-template-columns: 1fr 40%;
+    .case-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
         align-items: start;
-        padding: 148px 0 128px 75px;
+        align-content: start;
+        height: 42.5vw;
     }
 
-    .header-title {
-        font-size: 5.69vw;
-    }
-
-    .header-subtitle {
-        font-size: 1.39vw;
-        max-width: 400px;
-    }
-
-    .btn-try-it {
-        width: 260px;
-        height: 64px;
-    }
-
-    .rating {
-        margin-left: 300px;
-        padding-right: 40px;
-    }
-
-    #headerImage {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-        align-self: end;
+    .case-image {
+        grid-column: 1;
         grid-row: 1 / 5;
-    }
-
-    #headerImage .header-postcard {
         width: 100%;
         height: auto;
-        object-fit: contain;
+        display: block;
+        position: relative;
+        align-self: center;
+        overflow: visible;
     }
 
-    .header-statistics {
-        right: 20px;
-        width: 90%;
+    .case-content h2 {
+        padding: 0;
+        margin: 0;
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 4.17vw;
+        line-height: 5.28vw;
+        width: 39.24vw;
+        text-align: left;
+        height: 20.83vw;
     }
 
-    .card img:first-child {
-        width: 284px;
+    .case-content .description {
+        text-align: left;
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 1.38vw;
+        line-height: 2.36vw;
+        width: 45.57vw;
     }
 
-    .first-brand-logo {
-        width: 184px;
+    .stat h3 {
+        font-size: 34px;
+        line-height: 30px;
     }
 
-    .second-brand-logo {
-        width: 235px;
+    .stat span {
+        font-size: 14px;
+        line-height: 22px;
     }
 
-    .third-brand-logo {
-        width: 166px;
+    .stats {
+        grid-column: 2;
+        grid-row: 3;
+        width: 45.57vw;
+        justify-content: space-between;
     }
 
-    .fourth-brand-logo {
-        width: 60px;
+    .case-btn {
+        text-align: left;
     }
 
-    .brand-needs-container {
-        grid-template-columns: repeat(3, 1fr);
+    .case-btn button {
+        margin: 0;
+        grid-column: 2;
+        grid-row: 4;
+        width: 232px;
+        height: 64px;
+
     }
-}
+
+    .brands-tabs {
+        max-width: 45.57vw;
+    }
+
+    .brand-tab img {
+        max-height: 28px;
+    }
+
+    .case-study {
+        align-items: end;
+    }
+
+    @media (min-width: 1250px) {
+        .main-container {
+            padding: 0 75px;
+        }
+
+        .header-content {
+            grid-template-columns: 1fr 40%;
+            align-items: start;
+            padding: 148px 0 128px 75px;
+        }
+
+        .header-title {
+            font-size: 5.69vw;
+        }
+
+        .header-subtitle {
+            font-size: 1.39vw;
+            max-width: 400px;
+        }
+
+        .btn-try-it {
+            width: 260px;
+            height: 64px;
+        }
+
+        .rating {
+            margin-left: 300px;
+            padding-right: 40px;
+        }
+
+        #headerImage {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            align-self: end;
+            grid-row: 1 / 5;
+        }
+
+        #headerImage .header-postcard {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .header-statistics {
+            right: 20px;
+            width: 90%;
+        }
+
+        .card img:first-child {
+            width: 284px;
+        }
+
+        .first-brand-logo {
+            width: 184px;
+        }
+
+        .second-brand-logo {
+            width: 235px;
+        }
+
+        .third-brand-logo {
+            width: 166px;
+        }
+
+        .fourth-brand-logo {
+            width: 60px;
+        }
+
+        .brand-needs-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
