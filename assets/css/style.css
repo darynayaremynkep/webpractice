@@ -938,11 +938,13 @@ button.create-account {
     width: auto;
     display: block;
 }
+
 /* --------------- Try PostPilot -------------------*/
-.try-pp-section{
+.try-pp-section {
     background-color: var(--button-color);
     padding: 6.67vw 0;
 }
+
 .try-pp {
     flex-direction: column;
     justify-content: center;
@@ -968,7 +970,8 @@ button.create-account {
     text-align: center;
     margin: 0 auto;
 }
-.try-pp p{
+
+.try-pp p {
     font-size: 9px;
     font-family: Inter, sans-serif;
     font-weight: 500;
@@ -984,16 +987,19 @@ button.create-account {
     align-items: center;
     align-self: center;
 }
-.try-pp-stars{
+
+.try-pp-stars {
     justify-content: center;
     align-items: center;
 }
-.try-pp-rating{
+
+.try-pp-rating {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
 }
+
 .try-pp-reviews {
     font-size: 12px;
     color: #fff;
@@ -1017,6 +1023,73 @@ button.create-account {
     margin: 20px 0;
 }
 
+/* --------------- Trends -------------------*/
+.trends-section {
+    background-color: #f3fafa;
+    padding: 6.67vw 0;
+}
+
+.trends-content h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-border-color);
+    font-family: Inter, sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 36px;
+    letter-spacing: -2px;
+}
+
+.trend-container {
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 5.14vw;
+}
+
+.trend-card {
+    width: calc(100% - 40px);
+    max-width: 410px;
+    height: 100%;
+    max-height: 396px;
+    text-align: center;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+.trend-card.card-1 .img {
+    background-image: url("../images/trend-1.png");
+}
+
+.trend-card.card-2 .img {
+    background-image: url("../images/trend-2.png");
+}
+
+.trend-card.card-3 .img {
+    background-image: url("../images/trend-3.png");
+}
+
+.trend-card .img {
+    width: 100%;
+    aspect-ratio: 410 / 272;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.trend-card h3 {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--text-border-color);
+    max-width: 357px;
+    text-align: left;
+}
 
 
 /* --------------- Media Queries --------------------- */
@@ -1199,9 +1272,11 @@ button.create-account {
         font-size: 4.375vw;
         line-height: 5.28vw;
     }
-    .try-pp-section{
+
+    .try-pp-section {
         padding: 0;
     }
+
     .try-pp {
 
         height: 41.7vw;
@@ -1219,11 +1294,11 @@ button.create-account {
         grid-row: 1;
         font-size: 5.63vw;
         line-height: 6.67vw;
-        width:35.35vw;
+        width: 35.35vw;
         text-align: left;
     }
 
-    .try-pp h3{
+    .try-pp h3 {
         grid-column: 1;
         grid-row: 2;
         font-size: 1.39vw;
@@ -1231,7 +1306,8 @@ button.create-account {
         text-align: left;
         margin: 0;
     }
-    .try-pp p{
+
+    .try-pp p {
         padding-bottom: 3.3vw;
         grid-column: 1;
         grid-row: 4;
@@ -1247,7 +1323,7 @@ button.create-account {
         width: 190px;
         height: 64px;
         margin: 0;
-justify-self: start;
+        justify-self: start;
     }
 
     .rating {
@@ -1273,20 +1349,31 @@ justify-self: start;
         line-height: 1.67vw;
     }
 
-    .try-pp-image{
+    .try-pp-image {
         grid-column: 2;
         grid-row: 1 / 5;
         display: block;
-        width:100%;
+        width: 100%;
         height: 100%;
         position: relative;
         overflow: visible;
     }
+
     .try-pp-postcard {
-    width: 41.4vw;
-    height: 41.7vw;
-    display: block;
-}
+        width: 41.4vw;
+        height: 41.7vw;
+        display: block;
+    }
+
+    .trend-card h3 {
+        font-size: 1.81vw;
+        line-height: 2.5vw;
+    }
+
+    .trends-content h2 {
+        font-size: 4.73vw;
+        line-height: 5.28vw;
+    }
 
 }
 
@@ -1622,5 +1709,9 @@ justify-self: start;
 
     .brand-needs-container {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .trend-container {
+        gap: 30px;
     }
 }
