@@ -43,24 +43,29 @@ document.addEventListener('DOMContentLoaded', () => {
     let searchQuery = '';
 
     async function fetchContacts() {
-        if (!contactGrid) return; 
+    if (!contactGrid) return;
 
-        try {
-            const response = await fetch('assets/data/contacts.json');
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
+    try {
+        const response = await fetch('assets/data/contacts.json');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-            contactsData = await response.json();
-            renderContacts();
-        } catch (error) {
-            console.error('Error loading contacts:', error);
-            if (errorMessage) {
-                errorMessage.classList.remove('d-none');
-            }
+        contactsData = await response.json();
+        
+        if (errorMessage) {
+            errorMessage.classList.add('d-none');
+        }
+
+        renderContacts();
+    } catch (error) {
+        console.error('Error loading contacts:', error);
+        if (errorMessage) {
+            errorMessage.classList.remove('d-none');
         }
     }
+}
 
     function renderContacts() {
         if (!contactGrid) return;
