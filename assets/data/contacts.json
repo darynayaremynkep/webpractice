@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "category": "support",
+    "title": "Customer Support",
+    "description": "Our team usually responds within a few hours during business days.",
+    "email": "support@postpilot.com",
+    "detail": "Live Chat available Mon-Fri",
+    "badge": "24/7 Priority"
+  },
+  {
+    "id": 2,
+    "category": "offices",
+    "title": "Print Facility & HQ",
+    "description": "All postcard campaigns are printed and dispatched directly from our main facility.",
+    "email": "print@postpilot.com",
+    "detail": "South Carolina, United States",
+    "badge": "Main Hub"
+  },
+  {
+    "id": 3,
+    "category": "support",
+    "title": "Partnership & Press",
+    "description": "Interested in joining our partner program or press inquiries?",
+    "email": "partners@postpilot.com",
+    "detail": "Co-marketing & Affiliates",
+    "badge": "Growth"
+  },
+  {
+    "id": 4,
+    "category": "offices",
+    "title": "European Office",
+    "description": "Our regional coordination office for international delivery and support.",
+    "email": "eu-support@postpilot.com",
+    "detail": "London, United Kingdom",
+    "badge": "Europe"
+  }
+]
