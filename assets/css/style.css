@@ -1606,12 +1606,15 @@ body.no-scroll {
     border-radius: 14px;
     padding: 20px;
     color: #c0392b;
-    display: flex;
     align-items: center;
     gap: 15px;
     margin-top: 30px;
     font-family: Inter, sans-serif;
     font-weight: 500;
+}
+
+.error-box:not(.d-none) {
+    display: flex;
 }
 
 .no-results {

@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         contactsData = await response.json();
-        
+
+        // Сховати блок помилки, якщо завантаження пройшло успішно
         if (errorMessage) {
             errorMessage.classList.add('d-none');
         }
@@ -61,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderContacts();
     } catch (error) {
         console.error('Error loading contacts:', error);
+        
+        // Показувати блок помилки ТІЛЬКИ якщо fetch дійсно впав
         if (errorMessage) {
             errorMessage.classList.remove('d-none');
         }
