@@ -39,9 +39,10 @@
                 </div>
                 <ul id="mainMenu" class="main-menu d-flex">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Resources <i class="fa-solid fa-angle-down"></i></a></li>
-                    <li><a href="#">Success stories</a></li>
+                    <li><a href="404.html">Resources <i class="fa-solid fa-angle-down"></i></a></li>
+                    <li><a href="404.html">Success stories</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <button id="topBtnLogin" class="login btn-top-down">
                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
@@ -56,8 +57,10 @@
 
         <!-- Banner section -->
         <div class="subpage-hero main-container d-flex">
-            <h1 class="header-title">We are reinventing <span class="highlight">direct mail</span> for modern ecommerce.</h1>
-            <p class="header-subtitle">Built by DTC operators, for DTC operators. Helping brands build real connections offline.</p>
+            <h1 class="header-title">We are reinventing <span class="highlight">direct mail</span> for modern ecommerce.
+            </h1>
+            <p class="header-subtitle">Built by DTC operators, for DTC operators. Helping brands build real connections
+                offline.</p>
         </div>
     </header>
 
@@ -67,15 +70,18 @@
             <div class="about-grid">
                 <div class="about-card card-1">
                     <h3>Our Mission</h3>
-                    <p>To cut through the digital noise and deliver memorable physical experiences that turn shoppers into lifelong brand advocates.</p>
+                    <p>To cut through the digital noise and deliver memorable physical experiences that turn shoppers
+                        into lifelong brand advocates.</p>
                 </div>
                 <div class="about-card card-2">
                     <h3>Built for E-commerce</h3>
-                    <p>We saw email inboxes becoming crowded and digital ad costs skyrocketing. PostPilot was created as the automated answer for physical retention.</p>
+                    <p>We saw email inboxes becoming crowded and digital ad costs skyrocketing. PostPilot was created as
+                        the automated answer for physical retention.</p>
                 </div>
                 <div class="about-card card-3">
                     <h3>Sustainable Printing</h3>
-                    <p>We care deeply about our planet. All our paper is sourced from FSC-certified sustainable forests, and we plant trees for every campaign.</p>
+                    <p>We care deeply about our planet. All our paper is sourced from FSC-certified sustainable forests,
+                        and we plant trees for every campaign.</p>
                 </div>
             </div>
         </div>
@@ -87,26 +93,27 @@
             <div class="footer-top">
                 <div class="eco-friendly">
                     <div class="eco-friendly-img"></div>
-                    <p>Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our paper usage.</p>
+                    <p>Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our
+                        paper usage.</p>
                 </div>
                 <div class="company company-1">
                     <ul class="footer-company d-flex">
                         <li>company</li>
                         <li><a href="about.html">About us</a></li>
-                        <li><a href="#">Partner program</a></li>
-                        <li><a href="#">Career</a></li>
+                        <li><a href="404.html">Partner program</a></li>
+                        <li><a href="404.html">Career</a></li>
                         <li><a href="contact.html">Contact us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="404.html">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="company company-2">
                     <ul class="footer-company d-flex">
                         <li>.</li>
                         <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="#">Reviews</a></li>
-                        <li><a href="#">Direct Mail Academy</a></li>
-                        <li><a href="#">Success stories</a></li>
-                        <li><a href="#">Terms & conditions</a></li>
+                        <li><a href="404.html">Reviews</a></li>
+                        <li><a href="404.html">Direct Mail Academy</a></li>
+                        <li><a href="404.html">Success stories</a></li>
+                        <li><a href="404.html">Terms & conditions</a></li>
                     </ul>
                 </div>
                 <div class="contact">
@@ -137,6 +144,30 @@
             </div>
         </div>
     </footer>
+    <!-- Modal Window for Login / Sign Up -->
+    <div id="authModal" class="modal-overlay d-none">
+        <div class="modal-content">
+            <button id="closeAuthModalBtn" class="modal-close-btn">&times;</button>
+            <h2 class="modal-title">Get Started with PostPilot</h2>
+            <p class="modal-subtitle">Enter your details to log in or create your free account.</p>
+
+            <form id="authForm" class="modal-form" novalidate>
+                <div class="form-group">
+                    <label for="authEmail">Work Email *</label>
+                    <input type="email" id="authEmail" placeholder="name@company.com">
+                    <small class="error-msg" id="authEmailError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="authPassword">Password *</label>
+                    <input type="password" id="authPassword" placeholder="••••••••">
+                    <small class="error-msg" id="authPasswordError"></small>
+                </div>
+
+                <button type="submit" class="btn-submit">Continue</button>
+            </form>
+        </div>
+    </div>
 
     <script src="assets/js/main.js"></script>
 </body>

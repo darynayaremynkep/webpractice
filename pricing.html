@@ -39,9 +39,10 @@
                 </div>
                 <ul id="mainMenu" class="main-menu d-flex">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Resources <i class="fa-solid fa-angle-down"></i></a></li>
-                    <li><a href="#">Success stories</a></li>
+                    <li><a href="404.html">Resources <i class="fa-solid fa-angle-down"></i></a></li>
+                    <li><a href="404.html">Success stories</a></li>
                     <li><a href="about.html">Company <i class="fa-solid fa-angle-down"></i></a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <button id="topBtnLogin" class="login btn-top-down">
                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
@@ -119,7 +120,8 @@
             <div class="footer-top">
                 <div class="eco-friendly">
                     <div class="eco-friendly-img"></div>
-                    <p>Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our paper usage.</p>
+                    <p>Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our
+                        paper usage.</p>
                 </div>
                 <div class="company company-1">
                     <ul class="footer-company d-flex">
@@ -135,10 +137,10 @@
                     <ul class="footer-company d-flex">
                         <li>.</li>
                         <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="#">Reviews</a></li>
-                        <li><a href="#">Direct Mail Academy</a></li>
-                        <li><a href="#">Success stories</a></li>
-                        <li><a href="#">Terms & conditions</a></li>
+                        <li><a href="404.html">Reviews</a></li>
+                        <li><a href="404.html">Direct Mail Academy</a></li>
+                        <li><a href="404.html">Success stories</a></li>
+                        <li><a href="404.html">Terms & conditions</a></li>
                     </ul>
                 </div>
                 <div class="contact">
@@ -169,6 +171,30 @@
             </div>
         </div>
     </footer>
+    <!-- Modal Window for Login / Sign Up -->
+    <div id="authModal" class="modal-overlay d-none">
+        <div class="modal-content">
+            <button id="closeAuthModalBtn" class="modal-close-btn">&times;</button>
+            <h2 class="modal-title">Get Started with PostPilot</h2>
+            <p class="modal-subtitle">Enter your details to log in or create your free account.</p>
+
+            <form id="authForm" class="modal-form" novalidate>
+                <div class="form-group">
+                    <label for="authEmail">Work Email *</label>
+                    <input type="email" id="authEmail" placeholder="name@company.com">
+                    <small class="error-msg" id="authEmailError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="authPassword">Password *</label>
+                    <input type="password" id="authPassword" placeholder="••••••••">
+                    <small class="error-msg" id="authPasswordError"></small>
+                </div>
+
+                <button type="submit" class="btn-submit">Continue</button>
+            </form>
+        </div>
+    </div>
 
     <script src="assets/js/main.js"></script>
 </body>
