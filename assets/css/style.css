@@ -2088,6 +2088,15 @@ body.no-scroll {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px; 
     }
+    .btn-top-down {
+        width: auto;
+        height: auto;
+        padding: 10px 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
 
 }
 
@@ -2498,20 +2507,10 @@ body.no-scroll {
     }
 
 }
-.btn-contact-modal,
-#openModalBtn {
-    display: inline-flex;
+/* Нова обгортка для кнопок, яка перебирає на себе margin-left: auto */
+.nav-auth-buttons {
+    margin-left: auto;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 12px 26px;
-    background-color: var(--button-color); 
-    color: #ffffff;
-    font-family: Inter, sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: capitalize;
-    border: 2px solid var(--text-border-color);
-    border-radius: 12px;
-    box-shadow: 3px 3px 0px var(--text-border-color); 
-    cursor: pointer;
+    gap: 15px; /* Фіксований відступ між кнопками */
 }

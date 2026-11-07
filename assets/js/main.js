@@ -1,3 +1,14 @@
+// Ініціалізація Supabase 
+const SUPABASE_URL = 'https://cnjxfbxqcegjjdzcixlk.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_4DdjE8vv6EyfHEk3cO1gYg_3LFsET-M';
+
+let supabaseClient = null;
+
+if (window.supabase) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+} else {
+    console.error('Supabase SDK не завантажився! Перевірте підключення CDN у head.');
+}
 // =====================================================
 // 1. Мобільне меню та загальна навігація
 // =====================================================
@@ -275,21 +286,107 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =====================================================
-    // 5. Модальне вікно 2: Auth Modal (Логін / Реєстрація)
+   // =====================================================
+    // 5. Модальне вікно 2: Auth Modal (Логін / Реєстрація / Сесія)
     // =====================================================
     const authModal = document.getElementById('authModal');
     const closeAuthModalBtn = document.getElementById('closeAuthModalBtn');
     const authForm = document.getElementById('authForm');
 
-    // Кнопки, які відкривають саме модалку авторизації
     const authTriggerButtons = document.querySelectorAll(
         '.btn-try-it, #topBtnLogin, #topBtnCreateAccount, .try-pp-btn, .login-btn-footer, .try-btn-footer'
     );
 
+    // =====================================================
+    // Оновлення стану авторизації (UI)
+    // =====================================================
+    // =====================================================
+    // Оновлення стану авторизації (UI)
+    // =====================================================
+    // =====================================================
+    // Оновлення стану авторизації (UI)
+    // =====================================================
+    async function updateAuthUI() {
+        if (!supabaseClient) return;
+
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        const user = session?.user;
+
+        const loginBtn = document.getElementById('topBtnLogin');
+        const createAccBtn = document.getElementById('topBtnCreateAccount');
+
+        if (user) {
+            // 1. Приховуємо кнопку "Login"
+            if (loginBtn) {
+                loginBtn.style.display = 'none';
+            }
+
+            // 2. Оновлюємо кнопку "Create free account" -> "Log out"
+            if (createAccBtn) {
+                const btnSpan = createAccBtn.querySelector('span');
+                const btnImg = createAccBtn.querySelector('img');
+
+                if (btnSpan) btnSpan.textContent = 'Log out';
+
+                if (btnImg) btnImg.src = 'assets/images/icons/logout.svg';
+
+                
+                createAccBtn.classList.add('is-logout-state');
+                createAccBtn.onclick = handleLogout;
+            }
+        } else {
+            // 3. Стан ПОЧАТКОВИЙ (коли користувач НЕ авторизований / вийшов)
+            if (loginBtn) {
+                loginBtn.classList.remove('d-none');
+            }
+
+            if (createAccBtn) {
+                const btnSpan = createAccBtn.querySelector('span');
+                const btnImg = createAccBtn.querySelector('img');
+
+                // Гарантовано повертаємо оригінальний текст і SVG-картинку реєстрації
+                if (btnSpan) btnSpan.textContent = 'Create free account';
+                if (btnImg) {
+                    btnImg.src = 'assets/images/icons/add-user.svg';
+                    btnImg.alt = 'add user icon';
+                }
+
+                createAccBtn.classList.remove('is-logout-state');
+                createAccBtn.onclick = null; // Знімаємо вихід
+            }
+        }
+    }
+    // Функція виходу з акаунту
+    async function handleLogout(event) {
+        if (event) event.preventDefault();
+        if (!supabaseClient) return;
+
+        await supabaseClient.auth.signOut();
+        alert('You have logged out successfully.');
+        updateAuthUI();
+    }
+
+    
+
+    // Автоматично перевіряємо стан при завантаженні сторінки
+    updateAuthUI();
+
+    // Підписуємося на зміни стану авторизації (Login / Logout)
+    if (supabaseClient) {
+        supabaseClient.auth.onAuthStateChange((event, session) => {
+            updateAuthUI();
+        });
+    }
+
+    // -----------------------------------------------------
+    // Б. Відкриття / Закриття модального вікна
+    // -----------------------------------------------------
     if (authTriggerButtons.length > 0 && authModal) {
         authTriggerButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
+            button.addEventListener('click', async (event) => {
+                // Якщо це кнопка "Log out", не відкриваємо модалку
+                if (button.textContent.trim() === 'Log out') return;
+
                 event.preventDefault();
                 authModal.classList.remove('d-none');
                 document.body.classList.add('no-scroll');
@@ -320,36 +417,82 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // -----------------------------------------------------
+    // В. Обробка відправки форми (Login / Signup)
+    // -----------------------------------------------------
     if (authForm) {
-        authForm.addEventListener('submit', (event) => {
+        authForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             clearFormErrors(authForm);
 
             const emailInput = document.getElementById('authEmail');
             const passwordInput = document.getElementById('authPassword');
 
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
             let isValid = true;
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailInput.value.trim()) {
+            if (!email) {
                 showError(emailInput, 'authEmailError', 'Please enter your email');
                 isValid = false;
-            } else if (!emailRegex.test(emailInput.value.trim())) {
+            } else if (!emailRegex.test(email)) {
                 showError(emailInput, 'authEmailError', 'Please enter a valid email address');
                 isValid = false;
             }
 
-            if (!passwordInput.value.trim()) {
+            if (!password) {
                 showError(passwordInput, 'authPasswordError', 'Please enter your password');
                 isValid = false;
-            } else if (passwordInput.value.trim().length < 6) {
+            } else if (password.length < 6) {
                 showError(passwordInput, 'authPasswordError', 'Password must be at least 6 characters');
                 isValid = false;
             }
 
-            if (isValid) {
-                alert('Welcome! Action completed successfully.');
-                closeAuthModal();
+            if (!isValid) return;
+
+            if (!supabaseClient) {
+                showError(emailInput, 'authEmailError', 'Database connection error.');
+                return;
+            }
+
+            const submitBtn = authForm.querySelector('.btn-submit');
+            if (submitBtn) submitBtn.disabled = true;
+
+            try {
+                // 1. Спроба входу
+                let { data, error } = await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                // 2. Якщо користувача не знайдено — створюємо новий акаунт
+                if (error && (error.message.includes('Invalid login credentials') || error.status === 400)) {
+                    const signUpResult = await supabaseClient.auth.signUp({
+                        email: email,
+                        password: password
+                    });
+
+                    data = signUpResult.data;
+                    error = signUpResult.error;
+
+                    if (!error) {
+                        alert('Account created successfully!');
+                    }
+                }
+
+                if (error) {
+                    showError(emailInput, 'authEmailError', error.message);
+                } else {
+                    closeAuthModal();
+                    updateAuthUI(); // Оновлюємо кнопки в шапці
+                }
+            } catch (err) {
+                console.error('Supabase auth error:', err);
+                showError(emailInput, 'authEmailError', 'Authentication failed.');
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
             }
         });
     }
