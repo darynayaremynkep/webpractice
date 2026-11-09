@@ -20,7 +20,7 @@
 </head>
 
 <body class="page-404">
-   <!-- Header / Navbar -->
+    <!-- Header / Navbar -->
     <header class="subpage-header">
         <div class="navbar main-container d-flex">
             <nav class="d-flex">
@@ -38,20 +38,30 @@
                     </div>
                 </div>
                 <ul id="mainMenu" class="main-menu d-flex">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="about.html">Company <i class="fa-solid fa-angle-down"></i></a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="index.html" data-en="Home" data-ua="Головна">Home</a></li>
+                    <li><a href="contact.html" data-en="Contact" data-ua="Контакти">Contact</a></li>
+                    <li><a href="about.html" data-en="Company" data-ua="Компанія">Company <i class="fa-solid fa-angle-down"></i></a></li>
+                    <li><a href="pricing.html" data-en="Pricing" data-ua="Тарифи">Pricing</a></li>
+                    <li class="mobile-lang-li">
+        <button class="lang-btn langBtn">
+            <span class="langText">UA</span>
+        </button>
+    </li>
                 </ul>
-                <div class="nav-auth-buttons d-flex"></div>
+                <div class="nav-auth-buttons d-flex">
                     <button id="topBtnLogin" class="login btn-top-down">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        <span>Login</span>
+                        <span data-en="Login" data-ua="Вхід">Login</span>
                     </button>
                     <button id="topBtnCreateAccount" class="create-account btn-top-down">
                         <img src="assets/images/icons/add-user.svg" alt="add user icon">
-                        <span>Create free account</span>
+                        <span data-en="Create free account" data-ua="Створити акаунт">Create free account</span>
                     </button>
+                    <div class="lang-switch desktop-lang-switch">
+        <button class="lang-btn langBtn">
+            <span class="langText">UA</span>
+        </button>
+    </div>
                 </div>
             </nav>
         </div>
@@ -61,11 +71,11 @@
     <main class="error-404-section">
         <div class="main-container d-flex flex-column align-items-center text-center">
             <h1 class="error-code">404</h1>
-            <h2 class="error-title">Oops! Page <span class="highlight">not found</span>.</h2>
-            <p class="error-text">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+            <h2 class="error-title" data-en="Oops! Page not found." data-ua="Упс! Сторінку не знайдено.">Oops! Page <span class="highlight">not found</span>.</h2>
+            <p class="error-text" data-en="The page you are looking for might have been removed, had its name changed, or is temporarily unavailable." data-ua="Сторінка, яку ви шукаєте, могла бути видалена, змінила назву або тимчасово недоступна.">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
             <div class="error-actions d-flex">
-                <a href="index.html" class="btn-primary-action">Back to Home</a>
-                <a href="contact.html" class="btn-secondary-action">Contact Support</a>
+                <a href="index.html" class="btn-primary-action" data-en="Back to Home" data-ua="На головну">Back to Home</a>
+                <a href="contact.html" class="btn-secondary-action" data-en="Contact Support" data-ua="Підтримка">Contact Support</a>
             </div>
         </div>
     </main>
@@ -76,34 +86,34 @@
             <div class="footer-top">
                 <div class="eco-friendly">
                     <div class="eco-friendly-img"></div>
-                    <p>Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our paper usage.</p>
+                    <p data-en="Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our paper usage." data-ua="Наша папір походить з FSC-сертифікованих фабрик. Ми висаджуємо достатньо дерев.">Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our paper usage.</p>
                 </div>
                 <div class="company company-1">
                     <ul class="footer-company d-flex">
-                        <li>company</li>
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="#">Partner program</a></li>
-                        <li><a href="#">Career</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li data-en="company" data-ua="компанія">company</li>
+                        <li><a href="about.html" data-en="About us" data-ua="Про нас">About us</a></li>
+                        <li><a href="#" data-en="Partner program" data-ua="Партнерська програма">Partner program</a></li>
+                        <li><a href="#" data-en="Career" data-ua="Кар'єра">Career</a></li>
+                        <li><a href="contact.html" data-en="Contact us" data-ua="Контакти">Contact us</a></li>
+                        <li><a href="#" data-en="Privacy Policy" data-ua="Політика конфіденційності">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="company company-2">
                     <ul class="footer-company d-flex">
                         <li>.</li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="#">Reviews</a></li>
-                        <li><a href="#">Direct Mail Academy</a></li>
-                        <li><a href="#">Success stories</a></li>
-                        <li><a href="#">Terms & conditions</a></li>
+                        <li><a href="pricing.html" data-en="Pricing" data-ua="Тарифи">Pricing</a></li>
+                        <li><a href="#" data-en="Reviews" data-ua="Відгуки">Reviews</a></li>
+                        <li><a href="#" data-en="Direct Mail Academy" data-ua="Академія Direct Mail">Direct Mail Academy</a></li>
+                        <li><a href="#" data-en="Success stories" data-ua="Історії успіху">Success stories</a></li>
+                        <li><a href="#" data-en="Terms & conditions" data-ua="Умови використання">Terms & conditions</a></li>
                     </ul>
                 </div>
                 <div class="contact">
-                    <h3>contact</h3>
+                    <h3 data-en="contact" data-ua="контакти">contact</h3>
                     <div class="contact-email d-flex">
                         <a href="mailto:support@postpilot.com">support@postpilot.com</a>
                     </div>
-                    <p>Printed with ❤ at our facility in South Carolina.</p>
+                    <p data-en="Printed with ❤ at our facility in South Carolina." data-ua="Надруковано з ❤ у Південній Кароліні.">Printed with ❤ at our facility in South Carolina.</p>
                 </div>
             </div>
             <div class="footer-down d-flex">
@@ -116,11 +126,11 @@
                 <div class="footer-btn d-flex">
                     <button class="login-btn-footer btn-top-down">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        <span>Login</span>
+                        <span data-en="Login" data-ua="Вхід">Login</span>
                     </button>
                     <button class="try-btn-footer btn-top-down">
                         <img src="assets/images/icons/add-user.svg" alt="add user icon">
-                        <span>Try it for free</span>
+                        <span data-en="Try it for free" data-ua="Спробувати безкоштовно">Try it for free</span>
                     </button>
                 </div>
             </div>
@@ -131,23 +141,23 @@
     <div id="authModal" class="modal-overlay d-none">
         <div class="modal-content">
             <button id="closeAuthModalBtn" class="modal-close-btn">&times;</button>
-            <h2 class="modal-title">Get Started with PostPilot</h2>
-            <p class="modal-subtitle">Enter your details to log in or create your free account.</p>
+            <h2 class="modal-title" data-en="Get Started with PostPilot" data-ua="Розпочніть з PostPilot">Get Started with PostPilot</h2>
+            <p class="modal-subtitle" data-en="Enter your details to log in or create your free account." data-ua="Введіть свої дані для входу або створення акаунту.">Enter your details to log in or create your free account.</p>
 
             <form id="authForm" class="modal-form" novalidate>
                 <div class="form-group">
-                    <label for="authEmail">Work Email *</label>
+                    <label for="authEmail" data-en="Work Email *" data-ua="Робочий Email *">Work Email *</label>
                     <input type="email" id="authEmail" placeholder="name@company.com">
                     <small class="error-msg" id="authEmailError"></small>
                 </div>
 
                 <div class="form-group">
-                    <label for="authPassword">Password *</label>
+                    <label for="authPassword" data-en="Password *" data-ua="Пароль *">Password *</label>
                     <input type="password" id="authPassword" placeholder="••••••••">
                     <small class="error-msg" id="authPasswordError"></small>
                 </div>
 
-                <button type="submit" class="btn-submit">Continue</button>
+                <button type="submit" class="btn-submit" data-en="Continue" data-ua="Продовжити">Continue</button>
             </form>
         </div>
     </div>

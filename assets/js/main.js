@@ -10,9 +10,53 @@ if (window.supabase) {
     console.error('Supabase SDK не завантажився! Перевірте підключення CDN у head.');
 }
 // =====================================================
+// 0. ПЕРЕМИКАННЯ МОВИ (UA / EN)
+// =====================================================
+let currentLang = localStorage.getItem('site_lang') || 'en';
+
+function applyLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('site_lang', lang);
+
+    // Оновлення тексту НА ОБОХ кнопках мови (мобільній та десктопній)
+    document.querySelectorAll('.langText').forEach(el => {
+        el.textContent = lang === 'en' ? 'UA' : 'EN';
+    });
+
+    // Зміна тексту елементів з атрибутами data-en / data-ua
+    document.querySelectorAll('[data-en]').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.textContent = text;
+    });
+
+    // Зміна плейсхолдерів для полів вводу
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+        const placeholder = el.getAttribute(`data-${lang}-placeholder`);
+        if (placeholder) el.placeholder = placeholder;
+    });
+
+    // Оновлення карток команди на сторінці About
+    if (typeof window.refreshTeamList === 'function') {
+        window.refreshTeamList();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Вішаємо обробник подій на всі кнопки мови (.langBtn)
+    document.querySelectorAll('.langBtn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'ua' : 'en';
+            applyLanguage(newLang);
+        });
+    });
+
+    // Первинне застосування мови при завантаженні
+    applyLanguage(currentLang);
+});
+
+// =====================================================
 // 1. Мобільне меню та загальна навігація
 // =====================================================
-
 const iconBlock = document.getElementById('iconBlock');
 const iconOpen = document.getElementById('iconOpen');
 const iconClose = document.getElementById('iconClose');
@@ -21,6 +65,7 @@ const topBtnLogin = document.getElementById('topBtnLogin');
 const topBtnCreateAccount = document.getElementById('topBtnCreateAccount');
 const logo = document.getElementById('logo');
 const headerImage = document.getElementById('headerImage');
+const langBtn = document.getElementById('langBtn');
 
 if (iconBlock) {
     iconBlock.addEventListener('click', () => {
@@ -30,6 +75,12 @@ if (iconBlock) {
         if (topBtnLogin) topBtnLogin.classList.toggle('hidden-btn');
         if (topBtnCreateAccount) topBtnCreateAccount.classList.toggle('hidden-btn');
         if (logo) logo.classList.toggle('move-up');
+        if (langBtn) langBtn.classList.toggle('move-up');
+
+        const desktopLangSwitch = document.querySelector('.desktop-lang-switch .lang-btn');
+        if (desktopLangSwitch) {
+            desktopLangSwitch.classList.toggle('move-up');
+        }
         
         if (headerImage) {
             headerImage.classList.toggle('d-none');
@@ -40,9 +91,8 @@ if (iconBlock) {
 }
 
 // =====================================================
-// 2. Асинхронне завантаження JSON, DOM-рендеринг та Вкладки/Пошук
+// 2. Асинхронне завантаження JSON, DOM-рендеринг та Вкладки/Пошук (Contact Page)
 // =====================================================
-
 document.addEventListener('DOMContentLoaded', () => {
     const contactGrid = document.getElementById('contactGrid');
     const errorMessage = document.getElementById('errorMessage');
@@ -53,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCategory = 'all';
     let searchQuery = '';
 
-    // Резервний масив даних (fallback)
     const fallbackContacts = [
         {
             id: 1,
@@ -98,27 +147,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const response = await fetch('assets/data/contacts.json');
-            
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-
             contactsData = await response.json();
 
-            if (errorMessage) {
-                errorMessage.classList.add('d-none');
-            }
-
+            if (errorMessage) errorMessage.classList.add('d-none');
             renderContacts();
         } catch (error) {
             console.warn('Fetch failed. Using fallback data:', error);
-            
             contactsData = fallbackContacts;
 
-            if (errorMessage) {
-                errorMessage.classList.add('d-none');
-            }
-
+            if (errorMessage) errorMessage.classList.add('d-none');
             renderContacts();
         }
     }
@@ -136,7 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (filteredContacts.length === 0) {
-            contactGrid.innerHTML = `<p class="no-results">No contact items match your query.</p>`;
+            const noResText = currentLang === 'en' ? 'No contact items match your query.' : 'Нічого не знайдено за вашим запитом.';
+            contactGrid.innerHTML = `<p class="no-results">${noResText}</p>`;
             return;
         }
 
@@ -261,32 +302,32 @@ document.addEventListener('DOMContentLoaded', () => {
             let isValid = true;
 
             if (!nameInput.value.trim()) {
-                showError(nameInput, 'nameError', 'Please enter your name');
+                showError(nameInput, 'nameError', currentLang === 'en' ? 'Please enter your name' : 'Введіть ваше ім’я');
                 isValid = false;
             }
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailInput.value.trim()) {
-                showError(emailInput, 'emailError', 'Please enter your email');
+                showError(emailInput, 'emailError', currentLang === 'en' ? 'Please enter your email' : 'Введіть свій email');
                 isValid = false;
             } else if (!emailRegex.test(emailInput.value.trim())) {
-                showError(emailInput, 'emailError', 'Please enter a valid email address');
+                showError(emailInput, 'emailError', currentLang === 'en' ? 'Please enter a valid email address' : 'Введіть коректний email');
                 isValid = false;
             }
 
             if (!messageInput.value.trim()) {
-                showError(messageInput, 'messageError', 'Please enter your message');
+                showError(messageInput, 'messageError', currentLang === 'en' ? 'Please enter your message' : 'Введіть повідомлення');
                 isValid = false;
             }
 
             if (isValid) {
-                alert('Thank you! Your message has been sent successfully.');
+                alert(currentLang === 'en' ? 'Thank you! Your message has been sent successfully.' : 'Дякуємо! Ваше повідомлення успішно надіслано.');
                 closeContactModal();
             }
         });
     }
 
-   // =====================================================
+    // =====================================================
     // 5. Модальне вікно 2: Auth Modal (Логін / Реєстрація / Сесія)
     // =====================================================
     const authModal = document.getElementById('authModal');
@@ -297,15 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
         '.btn-try-it, #topBtnLogin, #topBtnCreateAccount, .try-pp-btn, .login-btn-footer, .try-btn-footer'
     );
 
-    // =====================================================
-    // Оновлення стану авторизації (UI)
-    // =====================================================
-    // =====================================================
-    // Оновлення стану авторизації (UI)
-    // =====================================================
-    // =====================================================
-    // Оновлення стану авторизації (UI)
-    // =====================================================
     async function updateAuthUI() {
         if (!supabaseClient) return;
 
@@ -316,76 +348,62 @@ document.addEventListener('DOMContentLoaded', () => {
         const createAccBtn = document.getElementById('topBtnCreateAccount');
 
         if (user) {
-            // 1. Приховуємо кнопку "Login"
             if (loginBtn) {
                 loginBtn.style.display = 'none';
             }
 
-            // 2. Оновлюємо кнопку "Create free account" -> "Log out"
             if (createAccBtn) {
                 const btnSpan = createAccBtn.querySelector('span');
                 const btnImg = createAccBtn.querySelector('img');
 
-                if (btnSpan) btnSpan.textContent = 'Log out';
-
+                if (btnSpan) btnSpan.textContent = currentLang === 'en' ? 'Log out' : 'Вийти';
                 if (btnImg) btnImg.src = 'assets/images/icons/logout.svg';
 
-                
                 createAccBtn.classList.add('is-logout-state');
                 createAccBtn.onclick = handleLogout;
             }
         } else {
-            // 3. Стан ПОЧАТКОВИЙ (коли користувач НЕ авторизований / вийшов)
             if (loginBtn) {
-                loginBtn.classList.remove('d-none');
+                loginBtn.style.display = '';
             }
 
             if (createAccBtn) {
                 const btnSpan = createAccBtn.querySelector('span');
                 const btnImg = createAccBtn.querySelector('img');
 
-                // Гарантовано повертаємо оригінальний текст і SVG-картинку реєстрації
-                if (btnSpan) btnSpan.textContent = 'Create free account';
+                if (btnSpan) btnSpan.textContent = currentLang === 'en' ? 'Create free account' : 'Створити акаунт';
                 if (btnImg) {
                     btnImg.src = 'assets/images/icons/add-user.svg';
                     btnImg.alt = 'add user icon';
                 }
 
                 createAccBtn.classList.remove('is-logout-state');
-                createAccBtn.onclick = null; // Знімаємо вихід
+                createAccBtn.onclick = null;
             }
         }
     }
-    // Функція виходу з акаунту
+
     async function handleLogout(event) {
         if (event) event.preventDefault();
         if (!supabaseClient) return;
 
         await supabaseClient.auth.signOut();
-        alert('You have logged out successfully.');
+        alert(currentLang === 'en' ? 'You have logged out successfully.' : 'Ви успішно вийшли з акаунту.');
         updateAuthUI();
     }
 
-    
-
-    // Автоматично перевіряємо стан при завантаженні сторінки
     updateAuthUI();
 
-    // Підписуємося на зміни стану авторизації (Login / Logout)
     if (supabaseClient) {
         supabaseClient.auth.onAuthStateChange((event, session) => {
             updateAuthUI();
         });
     }
 
-    // -----------------------------------------------------
-    // Б. Відкриття / Закриття модального вікна
-    // -----------------------------------------------------
     if (authTriggerButtons.length > 0 && authModal) {
         authTriggerButtons.forEach(button => {
             button.addEventListener('click', async (event) => {
-                // Якщо це кнопка "Log out", не відкриваємо модалку
-                if (button.textContent.trim() === 'Log out') return;
+                if (button.classList.contains('is-logout-state')) return;
 
                 event.preventDefault();
                 authModal.classList.remove('d-none');
@@ -417,9 +435,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // -----------------------------------------------------
-    // В. Обробка відправки форми (Login / Signup)
-    // -----------------------------------------------------
     if (authForm) {
         authForm.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -432,21 +447,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = passwordInput.value.trim();
 
             let isValid = true;
-
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
             if (!email) {
-                showError(emailInput, 'authEmailError', 'Please enter your email');
+                showError(emailInput, 'authEmailError', currentLang === 'en' ? 'Please enter your email' : 'Введіть свій email');
                 isValid = false;
             } else if (!emailRegex.test(email)) {
-                showError(emailInput, 'authEmailError', 'Please enter a valid email address');
+                showError(emailInput, 'authEmailError', currentLang === 'en' ? 'Please enter a valid email address' : 'Введіть коректний email');
                 isValid = false;
             }
 
             if (!password) {
-                showError(passwordInput, 'authPasswordError', 'Please enter your password');
+                showError(passwordInput, 'authPasswordError', currentLang === 'en' ? 'Please enter your password' : 'Введіть свій пароль');
                 isValid = false;
             } else if (password.length < 6) {
-                showError(passwordInput, 'authPasswordError', 'Password must be at least 6 characters');
+                showError(passwordInput, 'authPasswordError', currentLang === 'en' ? 'Password must be at least 6 characters' : 'Пароль має бути не менше 6 символів');
                 isValid = false;
             }
 
@@ -461,13 +476,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (submitBtn) submitBtn.disabled = true;
 
             try {
-                // 1. Спроба входу
                 let { data, error } = await supabaseClient.auth.signInWithPassword({
                     email: email,
                     password: password
                 });
 
-                // 2. Якщо користувача не знайдено — створюємо новий акаунт
                 if (error && (error.message.includes('Invalid login credentials') || error.status === 400)) {
                     const signUpResult = await supabaseClient.auth.signUp({
                         email: email,
@@ -478,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     error = signUpResult.error;
 
                     if (!error) {
-                        alert('Account created successfully!');
+                        alert(currentLang === 'en' ? 'Account created successfully!' : 'Акаунт успішно створено!');
                     }
                 }
 
@@ -486,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     showError(emailInput, 'authEmailError', error.message);
                 } else {
                     closeAuthModal();
-                    updateAuthUI(); // Оновлюємо кнопки в шапці
+                    updateAuthUI();
                 }
             } catch (err) {
                 console.error('Supabase auth error:', err);
@@ -497,8 +510,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 // =====================================================
-// РОБОТА З ТАБЛИЦЕЮ TEAM_MEMBERS НА СТОРІНЦІ ABOUT
+// 6. РОБОТА З ТАБЛИЦЕЮ TEAM_MEMBERS НА СТОРІНЦІ ABOUT
 // =====================================================
 document.addEventListener('DOMContentLoaded', () => {
     const addTeamForm = document.getElementById('addTeamForm');
@@ -552,83 +566,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (error) {
                 console.error('Supabase fetch error:', error);
-                showStatus('Error loading data: ' + error.message, true);
+                showStatus((currentLang === 'en' ? 'Error loading data: ' : 'Помилка завантаження: ') + error.message, true);
                 return;
             }
 
             renderTeam(data);
         } catch (err) {
             console.error('Fetch team exception:', err);
-            showStatus('Error loading team: ' + err.message, true);
+            showStatus((currentLang === 'en' ? 'Error loading team: ' : 'Помилка завантаження команди: ') + err.message, true);
         }
     }
 
-    if (addTeamForm) {
-        addTeamForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const client = getSupabaseClient();
-            if (!client) {
-                showStatus('Database connection is not ready. Please try again.', true);
-                return;
-            }
-
-            const name = document.getElementById('memberName').value.trim();
-            const role = document.getElementById('memberRole').value.trim();
-            const department = document.getElementById('memberDept').value;
-            const projects_count = parseInt(document.getElementById('memberProjects').value, 10) || 0;
-
-            if (!name || name.length > 50) {
-                showStatus('Name is required (max 50 chars).', true);
-                return;
-            }
-
-            if (btnSubmit) {
-                btnSubmit.disabled = true;
-                btnSubmit.textContent = 'Saving...';
-            }
-
-            try {
-                const { error } = await client
-                    .from('team_members')
-                    .insert([{ name, role, department, projects_count }]);
-
-                if (error) throw error;
-
-                showStatus('New team member added successfully!');
-                addTeamForm.reset();
-                fetchTeam();
-            } catch (err) {
-                console.error('Insert team error:', err);
-                showStatus('Failed to add team member: ' + err.message, true);
-            } finally {
-                if (btnSubmit) {
-                    btnSubmit.disabled = false;
-                    btnSubmit.textContent = 'Add Member';
-                }
-            }
-        });
-    }
+    // Реєструємо функцію для глобального виклику при зміні мови
+    window.refreshTeamList = fetchTeam;
 
     function renderTeam(members) {
         teamGrid.innerHTML = '';
 
         if (!members || members.length === 0) {
-            teamGrid.innerHTML = '<p class="empty-msg">No team members found matching your search.</p>';
+            const emptyText = currentLang === 'en' ? 'No team members found matching your search.' : 'Членів команди за вашим запитом не знайдено.';
+            teamGrid.innerHTML = `<p class="empty-msg">${emptyText}</p>`;
             return;
         }
+
+        const deptTranslations = {
+            'Marketing': { en: 'Marketing', ua: 'Маркетинг' },
+            'Design': { en: 'Design', ua: 'Дизайн' },
+            'Engineering': { en: 'Engineering', ua: 'Розробка' },
+            'Sales': { en: 'Sales', ua: 'Продажі' }
+        };
 
         members.forEach(member => {
             const card = document.createElement('div');
             card.className = 'team-card';
 
             const deptClass = member.department ? member.department.toLowerCase().trim() : '';
+            const deptName = member.department;
+            const translatedDept = deptTranslations[deptName] 
+                ? deptTranslations[deptName][currentLang] 
+                : deptName;
+
+            const projectsText = currentLang === 'en' ? 'Projects completed:' : 'Виконано проєктів:';
 
             card.innerHTML = `
                 <h4>${escapeHtml(member.name)}</h4>
                 <p class="role-text">${escapeHtml(member.role)}</p>
-                <span class="dept-badge ${deptClass}">${escapeHtml(member.department)}</span>
-                <p class="projects-text"><small>Projects completed: ${member.projects_count}</small></p>
+                <span class="dept-badge ${deptClass}">${escapeHtml(translatedDept)}</span>
+                <p class="projects-text"><small>${projectsText} ${member.projects_count}</small></p>
             `;
             teamGrid.appendChild(card);
         });
@@ -644,38 +628,45 @@ document.addEventListener('DOMContentLoaded', () => {
         addTeamForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            const client = getSupabaseClient();
+            if (!client) {
+                showStatus(currentLang === 'en' ? 'Database connection is not ready. Please try again.' : 'З’єднання з базою не готове. Спробуйте ще раз.', true);
+                return;
+            }
+
             const name = document.getElementById('memberName').value.trim();
             const role = document.getElementById('memberRole').value.trim();
             const department = document.getElementById('memberDept').value;
             const projects_count = parseInt(document.getElementById('memberProjects').value, 10) || 0;
 
             if (!name || name.length > 50) {
-                showStatus('Name is required (max 50 chars).', true);
+                showStatus(currentLang === 'en' ? 'Name is required (max 50 chars).' : 'Ім’я обов’язкове (макс. 50 символів).', true);
                 return;
             }
 
+            const btnText = btnSubmit ? btnSubmit.querySelector('span') : null;
             if (btnSubmit) {
                 btnSubmit.disabled = true;
-                btnSubmit.textContent = 'Saving...';
+                if (btnText) btnText.textContent = currentLang === 'en' ? 'Saving...' : 'Збереження...';
             }
 
             try {
-                const { error } = await window.supabaseClient
+                const { error } = await client
                     .from('team_members')
                     .insert([{ name, role, department, projects_count }]);
 
                 if (error) throw error;
 
-                showStatus('New team member added successfully!');
+                showStatus(currentLang === 'en' ? 'New team member added successfully!' : 'Нового члена команди успішно додано!');
                 addTeamForm.reset();
-                fetchTeam(); 
+                fetchTeam();
             } catch (err) {
                 console.error('Insert team error:', err);
-                showStatus('Failed to add team member: ' + err.message, true);
+                showStatus((currentLang === 'en' ? 'Failed to add team member: ' : 'Помилка додавання: ') + err.message, true);
             } finally {
                 if (btnSubmit) {
                     btnSubmit.disabled = false;
-                    btnSubmit.textContent = 'Add Member';
+                    if (btnText) btnText.textContent = currentLang === 'en' ? 'Add Member' : 'Додати';
                 }
             }
         });

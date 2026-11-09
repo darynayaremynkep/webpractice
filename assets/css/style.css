@@ -26,7 +26,15 @@
 .fa-angle-down {
     display: none;
 }
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 a {
     text-decoration: none;
 }
@@ -2700,4 +2708,63 @@ body.no-scroll {
 .dept-badge.sales {
     background-color: var(--big-bg-color);
     color: var(--small-text-color);
+}
+/* =====================================================
+   Адаптивна кнопка перемикання мови
+   ===================================================== */
+
+/* За замовчуванням (Десктоп > 768px) */
+.mobile-lang-li {
+    display: none; /* Ховаємо в меню на десктопі */
+}
+
+.desktop-lang-switch {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.lang-btn {
+    background-color: #ffffff;
+    color: var(--text-border-color, #1f2937);
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 12px;
+    padding: 6px 14px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--text-border-color, #1f2937);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang-btn:hover { background-color: #f3f4f6; }
+.lang-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--text-border-color, #1f2937);
+}
+
+/* Мобільні пристрої (<= 768px) */
+@media (max-width: 768px) {
+    /* Ховаємо десктопну кнопку поруч з Auth кнопками */
+    .desktop-lang-switch {
+        display: none ;
+    }
+
+    /* Показуємо кнопку всередині розгорнутого меню */
+    .mobile-lang-li {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .mobile-lang-li .lang-btn {
+        width: 80%;
+        max-width: 200px;
+        padding: 10px;
+        font-size: 1rem;
+    }
 }

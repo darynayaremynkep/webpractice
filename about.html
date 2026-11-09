@@ -11,8 +11,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -39,31 +39,43 @@
                     </div>
                 </div>
                 <ul id="mainMenu" class="main-menu d-flex">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="404.html">Resources <i class="fa-solid fa-angle-down"></i></a></li>
-                    <li><a href="404.html">Success stories</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" data-en="Home" data-ua="Головна">Home</a></li>
+                    <li><a href="404.html" data-en="Resources" data-ua="Ресурси">Resources <i class="fa-solid fa-angle-down"></i></a></li>
+                    <li><a href="404.html" data-en="Success stories" data-ua="Історії успіху">Success stories</a></li>
+                    <li><a href="pricing.html" data-en="Pricing" data-ua="Тарифи">Pricing</a></li>
+                    <li><a href="contact.html" data-en="Contact" data-ua="Контакти">Contact</a></li>
+                    <li class="mobile-lang-li">
+        <button class="lang-btn langBtn">
+            <span class="langText">UA</span>
+        </button>
+    </li>
                 </ul>
-                <div class="nav-auth-buttons d-flex"></div>
+                <div class="nav-auth-buttons d-flex">
                     <button id="topBtnLogin" class="login btn-top-down">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        <span>Login</span>
+                        <span data-en="Login" data-ua="Вхід">Login</span>
                     </button>
                     <button id="topBtnCreateAccount" class="create-account btn-top-down">
                         <img src="assets/images/icons/add-user.svg" alt="add user icon">
-                        <span>Create free account</span>
+                        <span data-en="Create free account" data-ua="Створити акаунт">Create free account</span>
                     </button>
+                    <div class="lang-switch desktop-lang-switch">
+        <button class="lang-btn langBtn">
+            <span class="langText">UA</span>
+        </button>
+    </div>
                 </div>
             </nav>
         </div>
 
         <!-- Banner section -->
         <div class="subpage-hero main-container d-flex">
-            <h1 class="header-title">We are reinventing <span class="highlight">direct mail</span> for modern ecommerce.
+            <h1 class="header-title" data-en="We are reinventing direct mail for modern ecommerce." data-ua="Ми переосмислюємо пряму поштову розсилку для сучасної комерції.">
+                We are reinventing <span class="highlight">direct mail</span> for modern ecommerce.
             </h1>
-            <p class="header-subtitle">Built by DTC operators, for DTC operators. Helping brands build real connections
-                offline.</p>
+            <p class="header-subtitle" data-en="Built by DTC operators, for DTC operators. Helping brands build real connections offline." data-ua="Створено операторами DTC для операторів DTC. Допомагаємо брендам будувати реальні зв'язки офлайн.">
+                Built by DTC operators, for DTC operators. Helping brands build real connections offline.
+            </p>
         </div>
     </header>
 
@@ -72,85 +84,89 @@
         <div class="main-container">
             <div class="about-grid">
                 <div class="about-card card-1">
-                    <h3>Our Mission</h3>
-                    <p>To cut through the digital noise and deliver memorable physical experiences that turn shoppers
-                        into lifelong brand advocates.</p>
+                    <h3 data-en="Our Mission" data-ua="Наша місія">Our Mission</h3>
+                    <p data-en="To cut through the digital noise and deliver memorable physical experiences that turn shoppers into lifelong brand advocates." data-ua="Пробитися крізь цифровий шум і надати незабутній фізичний досвід, що перетворює покупців на прихильників бренду.">
+                        To cut through the digital noise and deliver memorable physical experiences that turn shoppers into lifelong brand advocates.
+                    </p>
                 </div>
                 <div class="about-card card-2">
-                    <h3>Built for E-commerce</h3>
-                    <p>We saw email inboxes becoming crowded and digital ad costs skyrocketing. PostPilot was created as
-                        the automated answer for physical retention.</p>
+                    <h3 data-en="Built for E-commerce" data-ua="Створено для E-commerce">Built for E-commerce</h3>
+                    <p data-en="We saw email inboxes becoming crowded and digital ad costs skyrocketing. PostPilot was created as the automated answer for physical retention." data-ua="Ми бачили, як переповнюються скриньки email і ростуть ціни на рекламу. PostPilot створений для утримання клієнтів.">
+                        We saw email inboxes becoming crowded and digital ad costs skyrocketing. PostPilot was created as the automated answer for physical retention.
+                    </p>
                 </div>
                 <div class="about-card card-3">
-                    <h3>Sustainable Printing</h3>
-                    <p>We care deeply about our planet. All our paper is sourced from FSC-certified sustainable forests,
-                        and we plant trees for every campaign.</p>
+                    <h3 data-en="Sustainable Printing" data-ua="Екологічний друк">Sustainable Printing</h3>
+                    <p data-en="We care deeply about our planet. All our paper is sourced from FSC-certified sustainable forests, and we plant trees for every campaign." data-ua="Ми дбаємо про планету. Усьому нашому паперу присвоєно сертифікат FSC, і ми саджаємо дерева за кожну кампанію.">
+                        We care deeply about our planet. All our paper is sourced from FSC-certified sustainable forests, and we plant trees for every campaign.
+                    </p>
                 </div>
             </div>
+
+            <!-- Team Section -->
             <section class="main-container margin-top-40 team-section">
-                <h2 class="section-title">Our Team & Experts</h2>
+                <h2 class="section-title" data-en="Our Team & Experts" data-ua="Наша Команда та Експерти">Our Team & Experts</h2>
             
                 <div id="statusAlert" class="status-alert d-none"></div>
             
                 <div class="team-layout">
-            
                     <aside class="team-sidebar">
                         <form id="addTeamForm" class="data-form">
-                            <h3>Add Team Member</h3>
+                            <h3 data-en="Add Team Member" data-ua="Додати члена команди">Add Team Member</h3>
             
                             <div class="form-group">
-                                <label for="memberName">Full Name *</label>
-                                <input type="text" id="memberName" required maxlength="50" placeholder="e.g. John Doe">
+                                <label for="memberName" data-en="Full Name *" data-ua="Повне ім'я *">Full Name *</label>
+                                <input type="text" id="memberName" required maxlength="50" data-en-placeholder="e.g. John Doe" data-ua-placeholder="напр. Іван Іванов" placeholder="e.g. John Doe">
                             </div>
             
                             <div class="form-group">
-                                <label for="memberRole">Role / Position *</label>
-                                <input type="text" id="memberRole" required maxlength="50" placeholder="e.g. Marketing Lead">
+                                <label for="memberRole" data-en="Role / Position *" data-ua="Посада *">Role / Position *</label>
+                                <input type="text" id="memberRole" required maxlength="50" data-en-placeholder="e.g. Marketing Lead" data-ua-placeholder="напр. Керівник маркетингу" placeholder="e.g. Marketing Lead">
                             </div>
             
                             <div class="form-group">
-                                <label for="memberDept">Department *</label>
+                                <label for="memberDept" data-en="Department *" data-ua="Відділ *">Department *</label>
                                 <select id="memberDept" required>
-                                    <option value="">Select Department</option>
-                                    <option value="Marketing">Marketing</option>
-                                    <option value="Design">Design</option>
-                                    <option value="Engineering">Engineering</option>
-                                    <option value="Sales">Sales</option>
+                                    <option value="" data-en="Select Department" data-ua="Оберіть відділ">Select Department</option>
+                                    <option value="Marketing" data-en="Marketing" data-ua="Маркетинг">Marketing</option>
+                                    <option value="Design" data-en="Design" data-ua="Дизайн">Design</option>
+                                    <option value="Engineering" data-en="Engineering" data-ua="Розробка">Engineering</option>
+                                    <option value="Sales" data-en="Sales" data-ua="Продажі">Sales</option>
                                 </select>
                             </div>
             
                             <div class="form-group">
-                                <label for="memberProjects">Completed Projects</label>
+                                <label for="memberProjects" data-en="Completed Projects" data-ua="Завершені проєкти">Completed Projects</label>
                                 <input type="number" id="memberProjects" min="0" value="0">
                             </div>
             
                             <button type="submit" id="btnSubmitTeam" class="btn-submit-data">
-                                <span>Add Member</span>
+                                <span data-en="Add Member" data-ua="Додати">Add Member</span>
                             </button>
                         </form>
                     </aside>
             
                     <main class="team-content">
                         <div class="controls-panel">
-                            <input type="text" id="searchInput" placeholder="Search by name or role...">
+                            <input type="text" id="searchInput" data-en-placeholder="Search by name or role..." data-ua-placeholder="Пошук за ім'ям або посадою..." placeholder="Search by name or role...">
+                            
                             <select id="filterDept">
-                                <option value="">All Departments</option>
-                                <option value="Marketing">Marketing</option>
-                                <option value="Design">Design</option>
-                                <option value="Engineering">Engineering</option>
-                                <option value="Sales">Sales</option>
+                                <option value="" data-en="All Departments" data-ua="Усі відділи">All Departments</option>
+                                <option value="Marketing" data-en="Marketing" data-ua="Маркетинг">Marketing</option>
+                                <option value="Design" data-en="Design" data-ua="Дизайн">Design</option>
+                                <option value="Engineering" data-en="Engineering" data-ua="Розробка">Engineering</option>
+                                <option value="Sales" data-en="Sales" data-ua="Продажі">Sales</option>
                             </select>
+
                             <select id="sortSelect">
-                                <option value="created_at-desc">Newest First</option>
-                                <option value="name-asc">Name (A-Z)</option>
-                                <option value="projects_count-desc">Most Projects</option>
+                                <option value="created_at-desc" data-en="Newest First" data-ua="Спочатку новіші">Newest First</option>
+                                <option value="name-asc" data-en="Name (A-Z)" data-ua="Ім'я (А-Я)">Name (A-Z)</option>
+                                <option value="projects_count-desc" data-en="Most Projects" data-ua="Найбільше проєктів">Most Projects</option>
                             </select>
                         </div>
             
-                        <div id="teamGrid" class="team-grid">
-                        </div>
+                        <div id="teamGrid" class="team-grid"></div>
                     </main>
-            
                 </div>
             </section>
         </div>
@@ -162,35 +178,36 @@
             <div class="footer-top">
                 <div class="eco-friendly">
                     <div class="eco-friendly-img"></div>
-                    <p>Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our
-                        paper usage.</p>
+                    <p data-en="Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our paper usage." data-ua="Наша папір походить з FSC-сертифікованих фабрик. Ми висаджуємо достатньо дерев.">
+                        Our paper is sourced from FSC-certified mills. We plant enough trees to more than double our paper usage.
+                    </p>
                 </div>
                 <div class="company company-1">
                     <ul class="footer-company d-flex">
-                        <li>company</li>
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="404.html">Partner program</a></li>
-                        <li><a href="404.html">Career</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
-                        <li><a href="404.html">Privacy Policy</a></li>
+                        <li data-en="company" data-ua="компанія">company</li>
+                        <li><a href="about.html" data-en="About us" data-ua="Про нас">About us</a></li>
+                        <li><a href="404.html" data-en="Partner program" data-ua="Партнерська програма">Partner program</a></li>
+                        <li><a href="404.html" data-en="Career" data-ua="Кар'єра">Career</a></li>
+                        <li><a href="contact.html" data-en="Contact us" data-ua="Контакти">Contact us</a></li>
+                        <li><a href="404.html" data-en="Privacy Policy" data-ua="Політика конфіденційності">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="company company-2">
                     <ul class="footer-company d-flex">
                         <li>.</li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="404.html">Reviews</a></li>
-                        <li><a href="404.html">Direct Mail Academy</a></li>
-                        <li><a href="404.html">Success stories</a></li>
-                        <li><a href="404.html">Terms & conditions</a></li>
+                        <li><a href="pricing.html" data-en="Pricing" data-ua="Тарифи">Pricing</a></li>
+                        <li><a href="404.html" data-en="Reviews" data-ua="Відгуки">Reviews</a></li>
+                        <li><a href="404.html" data-en="Direct Mail Academy" data-ua="Академія Direct Mail">Direct Mail Academy</a></li>
+                        <li><a href="404.html" data-en="Success stories" data-ua="Історії успіху">Success stories</a></li>
+                        <li><a href="404.html" data-en="Terms & conditions" data-ua="Умови використання">Terms & conditions</a></li>
                     </ul>
                 </div>
                 <div class="contact">
-                    <h3>contact</h3>
+                    <h3 data-en="contact" data-ua="контакти">contact</h3>
                     <div class="contact-email d-flex">
                         <a href="mailto:support@postpilot.com">support@postpilot.com</a>
                     </div>
-                    <p>Printed with ❤ at our facility in South Carolina.</p>
+                    <p data-en="Printed with ❤ at our facility in South Carolina." data-ua="Надруковано з ❤ у Південній Кароліні.">Printed with ❤ at our facility in South Carolina.</p>
                 </div>
             </div>
             <div class="footer-down d-flex">
@@ -203,37 +220,38 @@
                 <div class="footer-btn d-flex">
                     <button class="login-btn-footer btn-top-down">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        <span>Login</span>
+                        <span data-en="Login" data-ua="Вхід">Login</span>
                     </button>
                     <button class="try-btn-footer btn-top-down">
                         <img src="assets/images/icons/add-user.svg" alt="add user icon">
-                        <span>Try it for free</span>
+                        <span data-en="Try it for free" data-ua="Спробувати безкоштовно">Try it for free</span>
                     </button>
                 </div>
             </div>
         </div>
     </footer>
+
     <!-- Modal Window for Login / Sign Up -->
     <div id="authModal" class="modal-overlay d-none">
         <div class="modal-content">
             <button id="closeAuthModalBtn" class="modal-close-btn">&times;</button>
-            <h2 class="modal-title">Get Started with PostPilot</h2>
-            <p class="modal-subtitle">Enter your details to log in or create your free account.</p>
+            <h2 class="modal-title" data-en="Get Started with PostPilot" data-ua="Розпочніть з PostPilot">Get Started with PostPilot</h2>
+            <p class="modal-subtitle" data-en="Enter your details to log in or create your free account." data-ua="Введіть свої дані для входу або створення акаунту.">Enter your details to log in or create your free account.</p>
 
             <form id="authForm" class="modal-form" novalidate>
                 <div class="form-group">
-                    <label for="authEmail">Work Email *</label>
+                    <label for="authEmail" data-en="Work Email *" data-ua="Робочий Email *">Work Email *</label>
                     <input type="email" id="authEmail" placeholder="name@company.com">
                     <small class="error-msg" id="authEmailError"></small>
                 </div>
 
                 <div class="form-group">
-                    <label for="authPassword">Password *</label>
+                    <label for="authPassword" data-en="Password *" data-ua="Пароль *">Password *</label>
                     <input type="password" id="authPassword" placeholder="••••••••">
                     <small class="error-msg" id="authPasswordError"></small>
                 </div>
 
-                <button type="submit" class="btn-submit">Continue</button>
+                <button type="submit" class="btn-submit" data-en="Continue" data-ua="Продовжити">Continue</button>
             </form>
         </div>
     </div>
