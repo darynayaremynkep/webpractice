@@ -87,6 +87,72 @@
                         and we plant trees for every campaign.</p>
                 </div>
             </div>
+            <section class="main-container margin-top-40 team-section">
+                <h2 class="section-title">Our Team & Experts</h2>
+            
+                <div id="statusAlert" class="status-alert d-none"></div>
+            
+                <div class="team-layout">
+            
+                    <aside class="team-sidebar">
+                        <form id="addTeamForm" class="data-form">
+                            <h3>Add Team Member</h3>
+            
+                            <div class="form-group">
+                                <label for="memberName">Full Name *</label>
+                                <input type="text" id="memberName" required maxlength="50" placeholder="e.g. John Doe">
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="memberRole">Role / Position *</label>
+                                <input type="text" id="memberRole" required maxlength="50" placeholder="e.g. Marketing Lead">
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="memberDept">Department *</label>
+                                <select id="memberDept" required>
+                                    <option value="">Select Department</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Design">Design</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Sales">Sales</option>
+                                </select>
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="memberProjects">Completed Projects</label>
+                                <input type="number" id="memberProjects" min="0" value="0">
+                            </div>
+            
+                            <button type="submit" id="btnSubmitTeam" class="btn-submit-data">
+                                <span>Add Member</span>
+                            </button>
+                        </form>
+                    </aside>
+            
+                    <main class="team-content">
+                        <div class="controls-panel">
+                            <input type="text" id="searchInput" placeholder="Search by name or role...">
+                            <select id="filterDept">
+                                <option value="">All Departments</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Design">Design</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Sales">Sales</option>
+                            </select>
+                            <select id="sortSelect">
+                                <option value="created_at-desc">Newest First</option>
+                                <option value="name-asc">Name (A-Z)</option>
+                                <option value="projects_count-desc">Most Projects</option>
+                            </select>
+                        </div>
+            
+                        <div id="teamGrid" class="team-grid">
+                        </div>
+                    </main>
+            
+                </div>
+            </section>
         </div>
     </main>
 

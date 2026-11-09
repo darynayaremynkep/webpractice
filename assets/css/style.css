@@ -2514,3 +2514,190 @@ body.no-scroll {
     align-items: center;
     gap: 15px; /* Фіксований відступ між кнопками */
 }
+/* =====================================================
+   Стилі блоку Team & Experts (About Page)
+   ===================================================== */
+.team-section {
+    font-family: Inter, sans-serif;
+    margin-bottom: 60px;
+}
+
+.team-section .section-title {
+    font-family: Inter, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-border-color, #1f2937);
+    margin-bottom: 24px;
+}
+
+/* Двоколоночний макет (Grid) */
+.team-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Форма ліворуч */
+.team-sidebar .data-form {
+    background: #ffffff;
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 4px 4px 0px var(--text-border-color, #1f2937);
+}
+
+.team-sidebar h3 {
+    font-family: Inter, sans-serif;
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--text-border-color, #1f2937);
+}
+
+.team-sidebar .form-group {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.team-sidebar label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-border-color, #1f2937);
+}
+
+.team-sidebar input,
+.team-sidebar select,
+.controls-panel input,
+.controls-panel select {
+    font-family: Inter, sans-serif;
+    padding: 10px 12px;
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    background-color: #fff;
+}
+
+.btn-submit-data {
+    width: 100%;
+    margin-top: 10px;
+    background-color: var(--button-color, #ff6b35);
+    color: #fff;
+    padding: 12px;
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Inter, sans-serif;
+    box-shadow: 3px 3px 0px var(--text-border-color, #1f2937);
+    transition: transform 0.1s ease;
+}
+
+.btn-submit-data:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--text-border-color, #1f2937);
+}
+
+/* Панель керування (Пошук/Фільтри) */
+.controls-panel {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.controls-panel input {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Сітка карток */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.team-card {
+    background: #fff;
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 4px 4px 0px var(--text-border-color, #1f2937);
+}
+
+.team-card h4 {
+    font-family: Inter, sans-serif;
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
+    color: var(--text-border-color, #1f2937);
+}
+
+.role-text {
+    margin: 0 0 12px 0;
+    color: #4b5563;
+    font-size: 0.9rem;
+}
+
+.dept-badge {
+    display: inline-block;
+    background: #f3f4f6;
+    border: 1px solid var(--text-border-color, #1f2937);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.projects-text {
+    margin-top: 12px;
+    margin-bottom: 0;
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+
+/* Адаптивність для планшетів та мобільних */
+@media (max-width: 900px) {
+    .team-layout {
+        grid-template-columns: 1fr;
+    }
+}
+/* Відступ між верхніми блоками та заголовком Our Team */
+.team-section {
+    margin-top: 60px;
+}
+
+/* Кольорові стилі для відділів */
+.dept-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 2px solid var(--text-border-color, #1f2937);
+    box-shadow: 2px 2px 0px var(--text-border-color, #1f2937);
+}
+
+/* Колір для кожного відділу */
+.dept-badge.marketing {
+    background-color: #fff3c4; /* Ніжно-жовтий */
+    color: var(--small-text-color);
+}
+
+.dept-badge.design {
+    background-color: var(--brand-result-bg-color); /* Ніжно-фіолетовий */
+    color: var(--small-text-color);
+}
+
+.dept-badge.engineering {
+    background-color: var(--steps-bg-color); /* Ніжно-зелений */
+    color: var(--small-text-color);
+}
+
+.dept-badge.sales {
+    background-color: var(--big-bg-color);
+    color: var(--small-text-color);
+}

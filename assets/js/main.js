@@ -497,3 +497,193 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// =====================================================
+// РОБОТА З ТАБЛИЦЕЮ TEAM_MEMBERS НА СТОРІНЦІ ABOUT
+// =====================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const addTeamForm = document.getElementById('addTeamForm');
+    const teamGrid = document.getElementById('teamGrid');
+    const statusAlert = document.getElementById('statusAlert');
+    const searchInput = document.getElementById('searchInput');
+    const filterDept = document.getElementById('filterDept');
+    const sortSelect = document.getElementById('sortSelect');
+    const btnSubmit = document.getElementById('btnSubmitTeam');
+
+    if (!teamGrid) return; 
+
+    function showStatus(message, isError = false) {
+        if (!statusAlert) return;
+        statusAlert.textContent = message;
+        statusAlert.className = `status-alert ${isError ? 'error' : 'success'}`;
+        statusAlert.classList.remove('d-none');
+        setTimeout(() => statusAlert.classList.add('d-none'), 4000);
+    }
+
+    function getSupabaseClient() {
+        return window.supabaseClient || (typeof supabaseClient !== 'undefined' ? supabaseClient : null);
+    }
+
+    async function fetchTeam() {
+        const client = getSupabaseClient();
+        
+        if (!client) {
+            console.error('Supabase client is not initialized!');
+            return;
+        }
+
+        try {
+            let query = client.from('team_members').select('*');
+
+            const searchValue = searchInput ? searchInput.value.trim() : '';
+            if (searchValue) {
+                query = query.ilike('name', `%${searchValue}%`);
+            }
+
+            const deptValue = filterDept ? filterDept.value : '';
+            if (deptValue) {
+                query = query.eq('department', deptValue);
+            }
+
+            const sortValue = sortSelect ? sortSelect.value : 'created_at-desc';
+            const [sortField, sortOrder] = sortValue.split('-');
+            query = query.order(sortField, { ascending: sortOrder === 'asc' });
+
+            const { data, error } = await query;
+
+            if (error) {
+                console.error('Supabase fetch error:', error);
+                showStatus('Error loading data: ' + error.message, true);
+                return;
+            }
+
+            renderTeam(data);
+        } catch (err) {
+            console.error('Fetch team exception:', err);
+            showStatus('Error loading team: ' + err.message, true);
+        }
+    }
+
+    if (addTeamForm) {
+        addTeamForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const client = getSupabaseClient();
+            if (!client) {
+                showStatus('Database connection is not ready. Please try again.', true);
+                return;
+            }
+
+            const name = document.getElementById('memberName').value.trim();
+            const role = document.getElementById('memberRole').value.trim();
+            const department = document.getElementById('memberDept').value;
+            const projects_count = parseInt(document.getElementById('memberProjects').value, 10) || 0;
+
+            if (!name || name.length > 50) {
+                showStatus('Name is required (max 50 chars).', true);
+                return;
+            }
+
+            if (btnSubmit) {
+                btnSubmit.disabled = true;
+                btnSubmit.textContent = 'Saving...';
+            }
+
+            try {
+                const { error } = await client
+                    .from('team_members')
+                    .insert([{ name, role, department, projects_count }]);
+
+                if (error) throw error;
+
+                showStatus('New team member added successfully!');
+                addTeamForm.reset();
+                fetchTeam();
+            } catch (err) {
+                console.error('Insert team error:', err);
+                showStatus('Failed to add team member: ' + err.message, true);
+            } finally {
+                if (btnSubmit) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = 'Add Member';
+                }
+            }
+        });
+    }
+
+    function renderTeam(members) {
+        teamGrid.innerHTML = '';
+
+        if (!members || members.length === 0) {
+            teamGrid.innerHTML = '<p class="empty-msg">No team members found matching your search.</p>';
+            return;
+        }
+
+        members.forEach(member => {
+            const card = document.createElement('div');
+            card.className = 'team-card';
+
+            const deptClass = member.department ? member.department.toLowerCase().trim() : '';
+
+            card.innerHTML = `
+                <h4>${escapeHtml(member.name)}</h4>
+                <p class="role-text">${escapeHtml(member.role)}</p>
+                <span class="dept-badge ${deptClass}">${escapeHtml(member.department)}</span>
+                <p class="projects-text"><small>Projects completed: ${member.projects_count}</small></p>
+            `;
+            teamGrid.appendChild(card);
+        });
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    if (addTeamForm) {
+        addTeamForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('memberName').value.trim();
+            const role = document.getElementById('memberRole').value.trim();
+            const department = document.getElementById('memberDept').value;
+            const projects_count = parseInt(document.getElementById('memberProjects').value, 10) || 0;
+
+            if (!name || name.length > 50) {
+                showStatus('Name is required (max 50 chars).', true);
+                return;
+            }
+
+            if (btnSubmit) {
+                btnSubmit.disabled = true;
+                btnSubmit.textContent = 'Saving...';
+            }
+
+            try {
+                const { error } = await window.supabaseClient
+                    .from('team_members')
+                    .insert([{ name, role, department, projects_count }]);
+
+                if (error) throw error;
+
+                showStatus('New team member added successfully!');
+                addTeamForm.reset();
+                fetchTeam(); 
+            } catch (err) {
+                console.error('Insert team error:', err);
+                showStatus('Failed to add team member: ' + err.message, true);
+            } finally {
+                if (btnSubmit) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = 'Add Member';
+                }
+            }
+        });
+    }
+
+    if (searchInput) searchInput.addEventListener('input', fetchTeam);
+    if (filterDept) filterDept.addEventListener('change', fetchTeam);
+    if (sortSelect) sortSelect.addEventListener('change', fetchTeam);
+
+    fetchTeam();
+});
