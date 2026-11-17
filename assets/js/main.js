@@ -1,4 +1,3 @@
-// Ініціалізація Supabase 
 const SUPABASE_URL = 'https://cnjxfbxqcegjjdzcixlk.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_4DdjE8vv6EyfHEk3cO1gYg_3LFsET-M';
 
@@ -9,40 +8,39 @@ if (window.supabase) {
 } else {
     console.error('Supabase SDK не завантажився! Перевірте підключення CDN у head.');
 }
-// =====================================================
-// 0. ПЕРЕМИКАННЯ МОВИ (UA / EN)
-// =====================================================
+
+
+
 let currentLang = localStorage.getItem('site_lang') || 'en';
 
 function applyLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('site_lang', lang);
 
-    // Оновлення тексту НА ОБОХ кнопках мови (мобільній та десктопній)
+    document.documentElement.lang = lang === 'ua' ? 'uk' : 'en';
+
     document.querySelectorAll('.langText').forEach(el => {
         el.textContent = lang === 'en' ? 'UA' : 'EN';
     });
 
-    // Зміна тексту елементів з атрибутами data-en / data-ua
+
     document.querySelectorAll('[data-en]').forEach(el => {
         const text = el.getAttribute(`data-${lang}`);
-        if (text) el.textContent = text;
+        if (text) el.innerHTML = text;
     });
 
-    // Зміна плейсхолдерів для полів вводу
     document.querySelectorAll('[data-en-placeholder]').forEach(el => {
         const placeholder = el.getAttribute(`data-${lang}-placeholder`);
         if (placeholder) el.placeholder = placeholder;
     });
 
-    // Оновлення карток команди на сторінці About
     if (typeof window.refreshTeamList === 'function') {
         window.refreshTeamList();
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Вішаємо обробник подій на всі кнопки мови (.langBtn)
+
     document.querySelectorAll('.langBtn').forEach(btn => {
         btn.addEventListener('click', () => {
             const newLang = currentLang === 'en' ? 'ua' : 'en';
@@ -50,13 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Первинне застосування мови при завантаженні
     applyLanguage(currentLang);
 });
 
-// =====================================================
-// 1. Мобільне меню та загальна навігація
-// =====================================================
+
+
 const iconBlock = document.getElementById('iconBlock');
 const iconOpen = document.getElementById('iconOpen');
 const iconClose = document.getElementById('iconClose');
@@ -90,9 +86,8 @@ if (iconBlock) {
     });
 }
 
-// =====================================================
-// 2. Асинхронне завантаження JSON, DOM-рендеринг та Вкладки/Пошук (Contact Page)
-// =====================================================
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const contactGrid = document.getElementById('contactGrid');
     const errorMessage = document.getElementById('errorMessage');
@@ -235,9 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchContacts();
 
-    // =====================================================
-    // 3. Спільні допоміжні функції для форм
-    // =====================================================
+
+
     function clearFormErrors(formElement) {
         if (!formElement) return;
         formElement.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
@@ -252,9 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // =====================================================
-    // 4. Модальне вікно 1: Contact Modal (Зворотний зв'язок)
-    // =====================================================
+
+
     const contactModal = document.getElementById('contactModal');
     const openModalBtn = document.getElementById('openModalBtn');
     const closeModalBtn = document.getElementById('closeModalBtn');
@@ -327,9 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =====================================================
-    // 5. Модальне вікно 2: Auth Modal (Логін / Реєстрація / Сесія)
-    // =====================================================
+
+
     const authModal = document.getElementById('authModal');
     const closeAuthModalBtn = document.getElementById('closeAuthModalBtn');
     const authForm = document.getElementById('authForm');
@@ -346,11 +338,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const loginBtn = document.getElementById('topBtnLogin');
         const createAccBtn = document.getElementById('topBtnCreateAccount');
+        const footerAuthButtons = document.querySelectorAll('.login-btn-footer, .try-btn-footer');
 
         if (user) {
             if (loginBtn) {
                 loginBtn.style.display = 'none';
             }
+
+            footerAuthButtons.forEach(btn => {
+                btn.style.display = 'none';
+            });
 
             if (createAccBtn) {
                 const btnSpan = createAccBtn.querySelector('span');
@@ -366,6 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (loginBtn) {
                 loginBtn.style.display = '';
             }
+
+            footerAuthButtons.forEach(btn => {
+                btn.style.display = '';
+            });
 
             if (createAccBtn) {
                 const btnSpan = createAccBtn.querySelector('span');
@@ -511,9 +512,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// =====================================================
-// 6. РОБОТА З ТАБЛИЦЕЮ TEAM_MEMBERS НА СТОРІНЦІ ABOUT
-// =====================================================
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const addTeamForm = document.getElementById('addTeamForm');
     const teamGrid = document.getElementById('teamGrid');
@@ -577,7 +577,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Реєструємо функцію для глобального виклику при зміні мови
     window.refreshTeamList = fetchTeam;
 
     function renderTeam(members) {

@@ -6,6 +6,30 @@
     box-sizing: border-box;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
 .d-flex {
     display: flex;
 }
@@ -26,23 +50,6 @@
 .fa-angle-down {
     display: none;
 }
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-    position: relative;
-}
-
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-a {
-    text-decoration: none;
-}
-
-img {
-    width: 100%;
-    display: block;
-}
 
 .logo img {
     width: 130px;
@@ -52,6 +59,15 @@ footer img {
     width: 150px;
 }
 
+.main-container {
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* =====================================================
+   НАВІГАЦІЯ ТА МЕНЮ
+   ===================================================== */
 .strip {
     position: absolute;
     top: 7.5px;
@@ -75,28 +91,17 @@ footer img {
     align-items: center;
 }
 
-.main-header {
-    background-color: var(--header-bg-color);
-    min-height: 100vh;
-    height: auto;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding-bottom: 40px;
-}
-
-.main-container {
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 .navbar .menu-icon {
     order: 2;
     cursor: pointer;
     color: var(--text-border-color);
     font-size: 1.25rem;
     margin-left: 20px;
+}
+
+.menu-icon {
+    position: relative;
+    z-index: 10002;
 }
 
 .main-menu {
@@ -112,7 +117,6 @@ footer img {
     justify-content: center;
     font-size: 1.25rem;
     z-index: 999;
-
 }
 
 .main-menu li:not(:last-child) {
@@ -129,6 +133,60 @@ footer img {
     right: auto;
 }
 
+.nav-auth-buttons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.desktop-lang-switch {
+    display: none;
+}
+
+.mobile-lang-li {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.lang-btn {
+    background-color: #ffffff;
+    color: var(--text-border-color, #1f2937);
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 12px;
+    padding: 6px 14px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--text-border-color, #1f2937);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang-btn:hover {
+    background-color: #f3f4f6;
+}
+
+.lang-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--text-border-color, #1f2937);
+}
+
+.mobile-lang-li .lang-btn {
+    width: 80%;
+    max-width: 200px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+
+/* =====================================================
+   КНОПКИ
+   ===================================================== */
 .btn-top-down {
     border-radius: 12px;
     border: 2px solid var(--text-border-color);
@@ -160,6 +218,49 @@ button.create-account {
     width: 20px;
     height: 20px;
     margin: 0 auto;
+}
+
+.btn-try-it {
+    border-radius: 15px;
+    border: 2px solid var(--text-border-color);
+    box-shadow: 3px 3px 0px var(--text-border-color);
+    width: 200px;
+    height: 38px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--button-color);
+    color: #fff;
+    font-family: Inter, sans-serif;
+    cursor: pointer;
+}
+
+.button-tirf-header {
+    margin-top: 40px;
+}
+
+.button-tirf-feature {
+    margin-bottom: 111px;
+}
+
+.button-wrapper {
+    margin-top: 64px;
+    text-align: center;
+}
+
+
+/* =====================================================
+   HEADER (ГОЛОВНА)
+   ===================================================== */
+.main-header {
+    background-color: var(--header-bg-color);
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 40px;
 }
 
 .header-content {
@@ -221,28 +322,12 @@ button.create-account {
     font-weight: 500;
 }
 
-.btn-try-it {
-    border-radius: 15px;
-    border: 2px solid var(--text-border-color);
-    box-shadow: 3px 3px 0px var(--text-border-color);
-    width: 200px;
-    height: 38px;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    background-color: var(--button-color);
-    color: #fff;
-    font-family: Inter, sans-serif;
-    cursor: pointer;
-}
 
-.button-tirf-header {
-    margin-top: 40px;
-}
-
+/* =====================================================
+   БРЕНДИ
+   ===================================================== */
 .brand-section {
     background-color: #fff;
-
 }
 
 .brand-section-title {
@@ -319,6 +404,10 @@ button.create-account {
     width: clamp(40px, 6vw, 60px);
 }
 
+
+/* =====================================================
+   СТАТИСТИКА
+   ===================================================== */
 .statistics-section {
     background-color: #f3fafa;
     padding-top: 7.36vw;
@@ -379,6 +468,10 @@ button.create-account {
     height: 200px;
 }
 
+
+/* =====================================================
+   FEATURES
+   ===================================================== */
 .features {
     background-color: var(--big-bg-color);
     padding-top: 6vw;
@@ -396,13 +489,16 @@ button.create-account {
 
 .features-blocks {
     flex-direction: column;
-
 }
 
 .feature-block {
     flex-direction: column;
     margin-bottom: 128px;
     gap: 31px;
+}
+
+.feature-block:last-child {
+    margin-bottom: 48px;
 }
 
 .first-feature-block,
@@ -414,28 +510,6 @@ button.create-account {
 .second-feature-block {
     justify-content: flex-end;
     align-self: flex-end;
-}
-
-.message {
-    flex-direction: column;
-    margin: 0;
-    position: relative;
-    background: transparent;
-    border: 1px solid #d1c7be;
-    border-radius: 15px;
-    padding: 24px;
-    gap: 16px;
-}
-
-.quote {
-    position: absolute;
-    top: -7px;
-    color: var(--button-color);
-    left: 17px;
-    font-size: 40px;
-    line-height: 0.8;
-    background: var(--big-bg-color);
-    padding: 0 2px;
 }
 
 .feature-block-title {
@@ -461,12 +535,45 @@ button.create-account {
     line-height: 26px;
 }
 
+.feature-logo {
+    height: 24px;
+    width: auto;
+    display: block;
+}
+
+.message {
+    flex-direction: column;
+    margin: 0;
+    position: relative;
+    background: transparent;
+    border: 1px solid #d1c7be;
+    border-radius: 15px;
+    padding: 24px;
+    gap: 16px;
+}
+
 .message p {
     color: var(--small-text-color);
     font-size: 12px;
     font-weight: 500;
     font-family: Inter, sans-serif;
     line-height: 22px;
+}
+
+.quote {
+    position: absolute;
+    top: -7px;
+    color: var(--button-color);
+    left: 17px;
+    font-size: 40px;
+    line-height: 0.8;
+    background: var(--big-bg-color);
+    padding: 0 2px;
+}
+
+.autor {
+    align-items: center;
+    justify-content: space-between;
 }
 
 .autor span {
@@ -476,25 +583,10 @@ button.create-account {
     font-family: Inter, sans-serif;
 }
 
-.autor {
-    align-items: center;
-    justify-content: space-between;
-}
 
-.feature-logo {
-    height: 24px;
-    width: auto;
-    display: block;
-}
-
-.feature-block:last-child {
-    margin-bottom: 48px;
-}
-
-.button-tirf-feature {
-    margin-bottom: 111px;
-}
-
+/* =====================================================
+   BRAND NEEDS
+   ===================================================== */
 .brand-needs-content {
     margin-top: 7.43vw;
 }
@@ -516,7 +608,6 @@ button.create-account {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-
 }
 
 .brand-needs-card {
@@ -529,84 +620,6 @@ button.create-account {
     align-items: center;
     flex-direction: column;
     justify-self: center;
-
-}
-
-.brand-needs-card.card-1 {
-    background-color: var(--big-bg-color);
-}
-
-.brand-needs-card.card-1 .img {
-    background-image: url("../images/brand-needs_1.png");
-    max-height: 208px;
-    height: calc(100% - 80px);
-    width: calc(100% - 80px);
-    max-width: 330px;
-
-}
-
-.brand-needs-card.card-2 {
-    background-color: var(--header-bg-color);
-}
-
-.brand-needs-card.card-2 .img {
-    background-image: url("../images/brand-needs_2.png");
-    max-height: 150px;
-    height: calc(100% - 80px);
-    width: calc(100% - 80px);
-    max-width: 308px;
-}
-
-.brand-needs-card.card-3 {
-    background-color: var(--brand-result-bg-color);
-}
-
-.brand-needs-card.card-3 .img {
-    background-image: url("../images/brand-needs_3.png");
-    max-height: 222px;
-    height: calc(100% - 80px);
-    width: calc(100% - 80px);
-    max-width: 317px;
-
-}
-
-.brand-needs-card.card-4 {
-    background-color: #D9F2F7;
-}
-
-.brand-needs-card.card-4 .img {
-    background-image: url("../images/brand-needs_4.png");
-    max-height: 220px;
-    height: calc(100% - 80px);
-    width: calc(100% - 80px);
-    max-width: 309px;
-
-}
-
-.brand-needs-card.card-5 {
-    background-color: #FAEDED;
-}
-
-.brand-needs-card.card-5 .img {
-    background-image: url("../images/brand-needs_5.png");
-    max-height: 181px;
-    height: calc(100% - 80px);
-    width: calc(100% - 80px);
-    max-width: 250px;
-
-}
-
-.brand-needs-card.card-6 {
-    background-color: #F1F1F1;
-}
-
-.brand-needs-card.card-6 .img {
-    background-image: url("../images/brand-needs_6.png");
-    max-height: 224px;
-    height: calc(100% - 80px);
-    width: calc(100% - 80px);
-    max-width: 300px;
-
 }
 
 .brand-needs-card .img {
@@ -639,6 +652,82 @@ button.create-account {
     max-width: 330px;
 }
 
+.brand-needs-card.card-1 {
+    background-color: var(--big-bg-color);
+}
+
+.brand-needs-card.card-1 .img {
+    background-image: url("../images/brand-needs_1.png");
+    max-height: 208px;
+    height: calc(100% - 80px);
+    width: calc(100% - 80px);
+    max-width: 330px;
+}
+
+.brand-needs-card.card-2 {
+    background-color: var(--header-bg-color);
+}
+
+.brand-needs-card.card-2 .img {
+    background-image: url("../images/brand-needs_2.png");
+    max-height: 150px;
+    height: calc(100% - 80px);
+    width: calc(100% - 80px);
+    max-width: 308px;
+}
+
+.brand-needs-card.card-3 {
+    background-color: var(--brand-result-bg-color);
+}
+
+.brand-needs-card.card-3 .img {
+    background-image: url("../images/brand-needs_3.png");
+    max-height: 222px;
+    height: calc(100% - 80px);
+    width: calc(100% - 80px);
+    max-width: 317px;
+}
+
+.brand-needs-card.card-4 {
+    background-color: #D9F2F7;
+}
+
+.brand-needs-card.card-4 .img {
+    background-image: url("../images/brand-needs_4.png");
+    max-height: 220px;
+    height: calc(100% - 80px);
+    width: calc(100% - 80px);
+    max-width: 309px;
+}
+
+.brand-needs-card.card-5 {
+    background-color: #FAEDED;
+}
+
+.brand-needs-card.card-5 .img {
+    background-image: url("../images/brand-needs_5.png");
+    max-height: 181px;
+    height: calc(100% - 80px);
+    width: calc(100% - 80px);
+    max-width: 250px;
+}
+
+.brand-needs-card.card-6 {
+    background-color: #F1F1F1;
+}
+
+.brand-needs-card.card-6 .img {
+    background-image: url("../images/brand-needs_6.png");
+    max-height: 224px;
+    height: calc(100% - 80px);
+    width: calc(100% - 80px);
+    max-width: 300px;
+}
+
+
+/* =====================================================
+   STEPS
+   ===================================================== */
 .steps {
     background-color: var(--steps-bg-color);
     padding: 6.67vw 0;
@@ -719,6 +808,10 @@ button.create-account {
     background: var(--text-border-color);
 }
 
+
+/* =====================================================
+   ВІДГУКИ
+   ===================================================== */
 .reviews-section {
     overflow: visible;
     margin: 6.67vw 0;
@@ -774,11 +867,6 @@ button.create-account {
     border-radius: 50%;
 }
 
-.button-wrapper {
-    margin-top: 64px;
-    text-align: center;
-}
-
 .twitter {
     margin-left: auto;
 }
@@ -817,6 +905,10 @@ button.create-account {
     font-weight: 700;
 }
 
+
+/* =====================================================
+   CASE STUDY
+   ===================================================== */
 .case-study-section {
     background-color: var(--brand-result-bg-color);
     padding: 6.67vw 0;
@@ -944,6 +1036,10 @@ button.create-account {
     display: block;
 }
 
+
+/* =====================================================
+   TRY PP
+   ===================================================== */
 .try-pp-section {
     background-color: var(--button-color);
     padding: 6.67vw 0;
@@ -1027,6 +1123,10 @@ button.create-account {
     margin: 20px 0;
 }
 
+
+/* =====================================================
+   TRENDS
+   ===================================================== */
 .trends-section {
     background-color: #f3fafa;
     padding: 6.67vw 0;
@@ -1059,7 +1159,15 @@ button.create-account {
     justify-content: start;
     align-items: center;
     flex-direction: column;
+}
 
+.trend-card .img {
+    width: 100%;
+    aspect-ratio: 410 / 272;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .trend-card.card-1 .img {
@@ -1074,15 +1182,6 @@ button.create-account {
     background-image: url("../images/trend-3.png");
 }
 
-.trend-card .img {
-    width: 100%;
-    aspect-ratio: 410 / 272;
-    margin-bottom: 20px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
 .trend-card h3 {
     font-family: Inter, sans-serif;
     font-weight: 700;
@@ -1093,6 +1192,10 @@ button.create-account {
     text-align: left;
 }
 
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
 footer {
     padding-top: 6.67vw;
 }
@@ -1274,6 +1377,10 @@ button.try-btn-footer {
     margin: 0 auto;
 }
 
+
+/* =====================================================
+   ПІДСТОРІНКИ: HERO, PRICING, ABOUT
+   ===================================================== */
 .subpage-header {
     background-color: var(--header-bg-color);
     padding-bottom: 60px;
@@ -1304,7 +1411,9 @@ button.try-btn-footer {
     background-color: #fff;
 }
 
-.pricing-grid {
+.pricing-grid,
+.about-grid,
+.contact-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1394,12 +1503,6 @@ button.try-btn-footer {
     color: var(--font-color);
 }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-}
-
 .about-card {
     border-radius: 18px;
     padding: 40px 30px;
@@ -1433,26 +1536,178 @@ button.try-btn-footer {
     line-height: 24px;
     color: var(--small-text-color);
 }
-body.no-scroll {
-    overflow: hidden;
-    height: 100vh;
+
+
+/* =====================================================
+   TEAM & EXPERTS (About)
+   ===================================================== */
+.team-section {
+    font-family: Inter, sans-serif;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
-.menu-icon {
-    position: relative;
-    z-index: 10002;
+.team-section .section-title {
+    font-family: Inter, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-border-color, #1f2937);
+    margin-bottom: 24px;
 }
 
-.contact-section {
-    padding: 80px 0;
-    background-color: #fff;
-}
-
-.contact-grid {
+.team-layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
-    justify-content: center;
+    align-items: start;
+}
+
+.team-sidebar .data-form {
+    background: #ffffff;
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 4px 4px 0px var(--text-border-color, #1f2937);
+}
+
+.team-sidebar h3 {
+    font-family: Inter, sans-serif;
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--text-border-color, #1f2937);
+}
+
+.team-sidebar .form-group {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.team-sidebar label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-border-color, #1f2937);
+}
+
+.team-sidebar input,
+.team-sidebar select,
+.controls-panel input,
+.controls-panel select {
+    font-family: Inter, sans-serif;
+    padding: 10px 12px;
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    background-color: #fff;
+}
+
+.btn-submit-data {
+    width: 100%;
+    margin-top: 10px;
+    background-color: var(--button-color, #ff6b35);
+    color: #fff;
+    padding: 12px;
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Inter, sans-serif;
+    box-shadow: 3px 3px 0px var(--text-border-color, #1f2937);
+    transition: transform 0.1s ease;
+}
+
+.btn-submit-data:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--text-border-color, #1f2937);
+}
+
+.controls-panel {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.controls-panel input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.team-card {
+    background: #fff;
+    border: 2px solid var(--text-border-color, #1f2937);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 4px 4px 0px var(--text-border-color, #1f2937);
+}
+
+.team-card h4 {
+    font-family: Inter, sans-serif;
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
+    color: var(--text-border-color, #1f2937);
+}
+
+.role-text {
+    margin: 0 0 12px 0;
+    color: #4b5563;
+    font-size: 0.9rem;
+}
+
+.projects-text {
+    margin-top: 12px;
+    margin-bottom: 0;
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+
+.dept-badge {
+    display: inline-block;
+    background: #f3f4f6;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 2px solid var(--text-border-color, #1f2937);
+    box-shadow: 2px 2px 0px var(--text-border-color, #1f2937);
+}
+
+.dept-badge.marketing {
+    background-color: #fff3c4;
+    color: var(--small-text-color);
+}
+
+.dept-badge.design {
+    background-color: var(--brand-result-bg-color);
+    color: var(--small-text-color);
+}
+
+.dept-badge.engineering {
+    background-color: var(--steps-bg-color);
+    color: var(--small-text-color);
+}
+
+.dept-badge.sales {
+    background-color: var(--big-bg-color);
+    color: var(--small-text-color);
+}
+
+
+/* =====================================================
+   CONTACT PAGE
+   ===================================================== */
+.contact-section {
+    padding: 80px 0;
+    background-color: #fff;
 }
 
 .contact-card {
@@ -1623,6 +1878,11 @@ body.no-scroll {
     text-align: center;
     padding: 40px 0;
 }
+
+
+/* =====================================================
+   МОДАЛЬНЕ ВІКНО
+   ===================================================== */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -1731,6 +1991,10 @@ body.no-scroll {
     transform: translate(2px, 2px);
 }
 
+
+/* =====================================================
+   СТОРІНКА 404
+   ===================================================== */
 .page-404 .subpage-header {
     background-color: #ffffff;
     border-top: 8px solid var(--header-bg-color);
@@ -1816,6 +2080,23 @@ body.no-scroll {
     transform: translate(-1px, -1px);
 }
 
+@media (max-width: 768px) {
+    #openModalBtn,
+    .contact-controls #openModalBtn,
+    .controls-wrapper #openModalBtn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: 40px;
+        min-width: 160px;
+        max-width: 100%;
+        line-height: 1.2;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+}
+
 @media (min-width: 769px) {
 
     .main-container {
@@ -1827,7 +2108,13 @@ body.no-scroll {
     }
 
     .btn-top-down {
-        height: 44px;
+        width: auto;
+        height: auto;
+        padding: 10px 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
     }
 
     .btn-top-down span {
@@ -1849,6 +2136,32 @@ body.no-scroll {
         width: 185px;
         font-size: 14px;
         font-weight: 500;
+    }
+
+    .login-btn-footer {
+        width: 84px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .try-btn-footer {
+        width: 137px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .desktop-lang-switch {
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+    }
+
+    .mobile-lang-li {
+        display: none;
+    }
+
+    .main-header {
+        padding-bottom: 0;
     }
 
     #headerImage .header-postcard {
@@ -1888,7 +2201,6 @@ body.no-scroll {
         height: 44px;
         font-size: 14px;
         margin-top: 0;
-
     }
 
     .button-tirf-header {
@@ -1984,17 +2296,18 @@ body.no-scroll {
         height: 3.98vw;
     }
 
+    /* Reviews */
     .reviews-section h2 {
         font-size: 4.375vw;
         line-height: 5.28vw;
     }
 
+    /* Try PP */
     .try-pp-section {
         padding: 0;
     }
 
     .try-pp {
-
         height: 41.7vw;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -2036,8 +2349,8 @@ body.no-scroll {
     .try-pp-btn {
         grid-column: 1;
         grid-row: 3;
-        width: 190px;
-        height: 64px;
+        width: 160px;
+        height: 36px;
         margin: 0;
         justify-self: start;
     }
@@ -2078,36 +2391,40 @@ body.no-scroll {
         line-height: 5.28vw;
     }
 
-    .login-btn-footer {
-        width: 84px;
-        font-size: 15px;
-        font-weight: 500;
-    }
-
-    .try-btn-footer {
-        width: 137px;
-        font-size: 14px;
-        font-weight: 500;
-    }
     .pricing-grid,
     .about-grid,
     .contact-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px; 
-    }
-    .btn-top-down {
-        width: auto;
-        height: auto;
-        padding: 10px 20px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
+        gap: 20px;
     }
 
+    html[lang="uk"] .case-content h2 {
+        font-size: 4.3vw;
+        line-height: 4.8vw;
+    }
+
+    html[lang="uk"] .header-title {
+        font-size: 4.5vw;
+    }
+
+    html[lang="uk"] .feature-section-title,
+    html[lang="uk"] .statistics-title,
+    html[lang="uk"] .brand-section-title {
+        font-size: 4.2vw;
+    }
+
+    html[lang="uk"] .feature-block-title {
+        font-size: 4vw;
+        line-height: 4.5vw;
+    }
 }
 
+@media (min-width: 901px) {
+    .team-layout {
+        grid-template-columns: 320px 1fr;
+    }
+}
 
 @media (min-width: 1095px) {
 
@@ -2172,7 +2489,6 @@ body.no-scroll {
 
     .header-statistics {
         width: 80%;
-
     }
 
     .card {
@@ -2330,6 +2646,11 @@ body.no-scroll {
         width: 45.57vw;
     }
 
+    .try-pp-btn {
+        width: 190px;
+        height: 64px;
+    }
+
     .stat h3 {
         font-size: 34px;
         line-height: 30px;
@@ -2357,7 +2678,6 @@ body.no-scroll {
         grid-row: 4;
         width: 232px;
         height: 64px;
-
     }
 
     .brands-tabs {
@@ -2428,6 +2748,82 @@ body.no-scroll {
         max-width: none;
     }
 
+    html[lang="uk"] .case-content h2 {
+        font-size: 4vw;
+        line-height: 4.6vw;
+    }
+
+    html[lang="uk"] .header-title {
+        font-size: 4.17vw;
+    }
+
+    html[lang="uk"] .feature-section-title,
+    html[lang="uk"] .statistics-title,
+    html[lang="uk"] .brand-section-title {
+        font-size: 4vw;
+    }
+
+    html[lang="uk"] .feature-block-title {
+        font-size: 3.8vw;
+        line-height: 4.16vw;
+    }
+
+    html[lang="uk"] .feature-block {
+        width: 360px;
+    }
+
+    html[lang="uk"] .second-feature-block {
+        width: 660px;
+    }
+}
+
+@media (min-width: 1095px) and (max-width: 1249px) {
+    .header-content,
+    .subpage-hero {
+        padding-top: 80px;
+    }
+
+    .navbar {
+        padding: 0 24px;
+    }
+
+    .logo img {
+        max-width: 120px;
+        height: auto;
+    }
+
+    .main-menu li a {
+        padding: 19px 9px;
+        white-space: nowrap;
+    }
+
+    .nav-auth-buttons {
+        gap: 8px;
+    }
+
+    .nav-auth-buttons .login,
+    .nav-auth-buttons .create-account,
+    #topBtnLogin,
+    #topBtnCreateAccount {
+        width: auto;
+        min-width: auto;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 8px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .desktop-lang-switch {
+        margin-left: 0;
+    }
+
+    .desktop-lang-switch .lang-btn {
+        width: auto;
+        min-width: auto;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
 }
 
 @media (min-width: 1250px) {
@@ -2435,6 +2831,7 @@ body.no-scroll {
     .main-container {
         padding: 0 75px;
     }
+
     .main-menu {
         font-size: 1.04vw;
     }
@@ -2442,8 +2839,7 @@ body.no-scroll {
     .header-content {
         grid-template-columns: 1fr 40%;
         align-items: start;
-        padding: 148px 0 128px 75px;
-        padding-top: 60px;
+        padding: 60px 0 0 75px;
     }
 
     .header-title {
@@ -2512,259 +2908,5 @@ body.no-scroll {
 
     .trend-container {
         gap: 30px;
-    }
-
-}
-/* Нова обгортка для кнопок, яка перебирає на себе margin-left: auto */
-.nav-auth-buttons {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Фіксований відступ між кнопками */
-}
-/* =====================================================
-   Стилі блоку Team & Experts (About Page)
-   ===================================================== */
-.team-section {
-    font-family: Inter, sans-serif;
-    margin-bottom: 60px;
-}
-
-.team-section .section-title {
-    font-family: Inter, sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-border-color, #1f2937);
-    margin-bottom: 24px;
-}
-
-/* Двоколоночний макет (Grid) */
-.team-layout {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-/* Форма ліворуч */
-.team-sidebar .data-form {
-    background: #ffffff;
-    border: 2px solid var(--text-border-color, #1f2937);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 4px 4px 0px var(--text-border-color, #1f2937);
-}
-
-.team-sidebar h3 {
-    font-family: Inter, sans-serif;
-    font-size: 1.25rem;
-    margin-top: 0;
-    margin-bottom: 16px;
-    color: var(--text-border-color, #1f2937);
-}
-
-.team-sidebar .form-group {
-    margin-bottom: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.team-sidebar label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-border-color, #1f2937);
-}
-
-.team-sidebar input,
-.team-sidebar select,
-.controls-panel input,
-.controls-panel select {
-    font-family: Inter, sans-serif;
-    padding: 10px 12px;
-    border: 2px solid var(--text-border-color, #1f2937);
-    border-radius: 10px;
-    font-size: 14px;
-    outline: none;
-    background-color: #fff;
-}
-
-.btn-submit-data {
-    width: 100%;
-    margin-top: 10px;
-    background-color: var(--button-color, #ff6b35);
-    color: #fff;
-    padding: 12px;
-    border: 2px solid var(--text-border-color, #1f2937);
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: Inter, sans-serif;
-    box-shadow: 3px 3px 0px var(--text-border-color, #1f2937);
-    transition: transform 0.1s ease;
-}
-
-.btn-submit-data:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px var(--text-border-color, #1f2937);
-}
-
-/* Панель керування (Пошук/Фільтри) */
-.controls-panel {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.controls-panel input {
-    flex: 1;
-    min-width: 200px;
-}
-
-/* Сітка карток */
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.team-card {
-    background: #fff;
-    border: 2px solid var(--text-border-color, #1f2937);
-    border-radius: 14px;
-    padding: 18px;
-    box-shadow: 4px 4px 0px var(--text-border-color, #1f2937);
-}
-
-.team-card h4 {
-    font-family: Inter, sans-serif;
-    margin: 0 0 6px 0;
-    font-size: 1.1rem;
-    color: var(--text-border-color, #1f2937);
-}
-
-.role-text {
-    margin: 0 0 12px 0;
-    color: #4b5563;
-    font-size: 0.9rem;
-}
-
-.dept-badge {
-    display: inline-block;
-    background: #f3f4f6;
-    border: 1px solid var(--text-border-color, #1f2937);
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.projects-text {
-    margin-top: 12px;
-    margin-bottom: 0;
-    color: #6b7280;
-    font-size: 0.85rem;
-}
-
-/* Адаптивність для планшетів та мобільних */
-@media (max-width: 900px) {
-    .team-layout {
-        grid-template-columns: 1fr;
-    }
-}
-/* Відступ між верхніми блоками та заголовком Our Team */
-.team-section {
-    margin-top: 60px;
-}
-
-/* Кольорові стилі для відділів */
-.dept-badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 700;
-    border: 2px solid var(--text-border-color, #1f2937);
-    box-shadow: 2px 2px 0px var(--text-border-color, #1f2937);
-}
-
-/* Колір для кожного відділу */
-.dept-badge.marketing {
-    background-color: #fff3c4; /* Ніжно-жовтий */
-    color: var(--small-text-color);
-}
-
-.dept-badge.design {
-    background-color: var(--brand-result-bg-color); /* Ніжно-фіолетовий */
-    color: var(--small-text-color);
-}
-
-.dept-badge.engineering {
-    background-color: var(--steps-bg-color); /* Ніжно-зелений */
-    color: var(--small-text-color);
-}
-
-.dept-badge.sales {
-    background-color: var(--big-bg-color);
-    color: var(--small-text-color);
-}
-/* =====================================================
-   Адаптивна кнопка перемикання мови
-   ===================================================== */
-
-/* За замовчуванням (Десктоп > 768px) */
-.mobile-lang-li {
-    display: none; /* Ховаємо в меню на десктопі */
-}
-
-.desktop-lang-switch {
-    display: flex;
-    align-items: center;
-    margin-left: 8px;
-}
-
-.lang-btn {
-    background-color: #ffffff;
-    color: var(--text-border-color, #1f2937);
-    border: 2px solid var(--text-border-color, #1f2937);
-    border-radius: 12px;
-    padding: 6px 14px;
-    font-family: Inter, sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    cursor: pointer;
-    box-shadow: 3px 3px 0px var(--text-border-color, #1f2937);
-    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lang-btn:hover { background-color: #f3f4f6; }
-.lang-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px var(--text-border-color, #1f2937);
-}
-
-/* Мобільні пристрої (<= 768px) */
-@media (max-width: 768px) {
-    /* Ховаємо десктопну кнопку поруч з Auth кнопками */
-    .desktop-lang-switch {
-        display: none ;
-    }
-
-    /* Показуємо кнопку всередині розгорнутого меню */
-    .mobile-lang-li {
-        display: block;
-        margin-top: 15px;
-        text-align: center;
-    }
-
-    .mobile-lang-li .lang-btn {
-        width: 80%;
-        max-width: 200px;
-        padding: 10px;
-        font-size: 1rem;
     }
 }
